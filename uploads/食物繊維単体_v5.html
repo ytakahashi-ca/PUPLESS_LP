@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>食物繊維 アニメーション(v5)</title>
+<style>
+body { margin: 0; background: #F4F8FB; font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+@keyframes fib-drift { 0%, 100% { transform: translate(0px,0px); } 50% { transform: translate(6px,-5px); } }
+@keyframes fib-strand-pulse { 0%, 40% { opacity: 0.8; } 58%, 70% { opacity: 1; } 88%, 100% { opacity: 0.8; } }
+@keyframes fib-grow { 0%, 48% { opacity: 0; transform: scale(0.4); } 64%, 88% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+@keyframes floaty { 0%, 100% { transform: translate(0px,0px); } 50% { transform: translate(5px,-11px); } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+@media (prefers-reduced-motion: reduce) { svg * { animation: none !important; } }
+</style>
+</head>
+<body>
+<div style="display:flex; flex-direction:column; align-items:center; gap:12px; width:100%; max-width:420px; padding:0 16px; box-sizing:border-box;">
+  <div style="position:relative; width:100%; border-radius:16px; overflow:hidden; background:#ECF5EF;">
+    <svg viewBox="0 0 400 290" style="display:block; width:100%; height:auto;">
+      <defs>
+        <radialGradient id="bg3" cx="52%" cy="44%" r="75%">
+          <stop offset="0%" stop-color="#EDF6F0"></stop>
+          <stop offset="100%" stop-color="#8FC7A8" stop-opacity="0.27"></stop>
+        </radialGradient>
+        <radialGradient id="blue3" cx="35%" cy="32%" r="80%">
+          <stop offset="0%" stop-color="#4E93C4"></stop>
+          <stop offset="60%" stop-color="#1A70A8"></stop>
+          <stop offset="100%" stop-color="#145A88"></stop>
+        </radialGradient>
+        <radialGradient id="wash1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8FC7A8" stop-opacity="0.18"></stop>
+          <stop offset="100%" stop-color="#8FC7A8" stop-opacity="0"></stop>
+        </radialGradient>
+        <radialGradient id="wash2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"></stop>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"></stop>
+        </radialGradient>
+        <radialGradient id="washGreen" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8FC7A8" stop-opacity="0.18"></stop>
+          <stop offset="100%" stop-color="#8FC7A8" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="400" height="290" fill="url(#bg3)"></rect>
+
+      <!-- 背景:管ではなく、ふわっとした面のウォッシュ2枚に変更 -->
+      <g data-layer="wash">
+        <ellipse cx="140" cy="90" rx="200" ry="130" fill="url(#wash2)"></ellipse>
+        <ellipse cx="270" cy="215" rx="220" ry="140" fill="url(#wash1)"></ellipse>
+      </g>
+
+      <g data-layer="ambient" fill="#3E8A63" fill-opacity="0.12">
+        <circle cx="65" cy="215" r="2.5" style="animation: floaty 11.5s ease-in-out infinite;"></circle>
+        <circle cx="300" cy="55" r="2" style="animation: floaty 9.5s ease-in-out infinite; animation-delay:-4s;"></circle>
+        <circle cx="362" cy="262" r="2.5" style="animation: floaty 13s ease-in-out infinite; animation-delay:-2s;"></circle>
+        <circle cx="150" cy="38" r="2" style="animation: floaty 10.5s ease-in-out infinite; animation-delay:-6s;"></circle>
+      </g>
+
+      <!-- 繊維の背後にごく淡いグリーンのグロー -->
+      <ellipse cx="185" cy="140" rx="150" ry="85" fill="url(#washGreen)"></ellipse>
+
+      <!-- 繊維ストランド:食物繊維らしいグリーン系に変更 -->
+      <g style="animation: fib-drift 8s ease-in-out infinite, fib-strand-pulse 8s ease-in-out infinite;" fill="none" stroke="#6FAE8C" stroke-width="2.5" stroke-linecap="round">
+        <path d="M 90 85 C 150 100, 200 135, 270 155"></path>
+        <path d="M 110 125 C 170 125, 222 160, 295 180"></path>
+        <path d="M 78 105 C 140 132, 210 145, 260 188"></path>
+      </g>
+
+      <!-- 繊維に定着している善玉菌(常在・呼吸のみ) -->
+      <g style="animation: fib-drift 8s ease-in-out infinite;">
+        <g fill="url(#blue3)">
+          <circle cx="150" cy="100" r="6" style="animation: breathe 3.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center;"></circle>
+          <circle cx="196" cy="141" r="5.5" style="animation: breathe 3.5s ease-in-out infinite; animation-delay:-1.1s; transform-box: fill-box; transform-origin: center;"></circle>
+          <circle cx="132" cy="128" r="6" style="animation: breathe 3.5s ease-in-out infinite; animation-delay:-2.2s; transform-box: fill-box; transform-origin: center;"></circle>
+        </g>
+      </g>
+
+      <!-- 増える表現:3個が位相ずらしで現れて、ループ末尾でそっと消える -->
+      <g style="animation: fib-drift 8s ease-in-out infinite;" fill="url(#blue3)">
+        <circle cx="248" cy="148" r="5.5" style="animation: fib-grow 8s ease-in-out infinite; transform-origin:248px 148px;"></circle>
+        <circle cx="230" cy="178" r="5" style="animation: fib-grow 8s ease-in-out infinite; animation-delay:-0.6s; transform-origin:230px 178px;"></circle>
+        <circle cx="272" cy="166" r="4.5" style="animation: fib-grow 8s ease-in-out infinite; animation-delay:-7.2s; transform-origin:272px 166px;"></circle>
+      </g>
+    </svg>
+    <span style="position:absolute; right:10px; bottom:8px; font-size:10px; color:#8a97a3;">※イメージ図</span>
+  </div>
+</div>
+</body>
+</html>

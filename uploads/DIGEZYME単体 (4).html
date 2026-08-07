@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIGEZYME® アニメーション</title>
+<style>
+body { margin: 0; background: #F4F8FB; font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+@keyframes dz-flow { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes dz-splitA { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(-13px,-9px) scale(0.82); } }
+@keyframes dz-splitB { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(16px,6px) scale(0.82); } }
+@keyframes dz-splitC { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(-14px,14px) scale(0.82); } }
+@keyframes dz-enzyme { 0% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 48% { offset-distance: 100%; opacity: 0; } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes dz-riding { 0%, 40% { opacity: 0; } 50%, 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes floaty { 0%, 100% { transform: translate(0px,0px); } 50% { transform: translate(5px,-11px); } }
+@media (prefers-reduced-motion: reduce) { svg * { animation: none !important; } }
+</style>
+</head>
+<body>
+<div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+  <div style="position:relative; width:320px; height:320px; border-radius:16px; overflow:hidden; background:#EAF2F8;">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="display:block;">
+      <defs>
+        <radialGradient id="bg1" cx="50%" cy="42%" r="75%">
+          <stop offset="0%" stop-color="#EAF2F8"></stop>
+          <stop offset="100%" stop-color="#7FA8C9" stop-opacity="0.28"></stop>
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="320" height="320" fill="url(#bg1)"></rect>
+      <text x="243" y="30" text-anchor="middle" font-size="11" fill="#1A70A8" opacity="0.95">DIGEZYME®</text>
+      <text x="52" y="38" text-anchor="middle" font-size="11" fill="#C77F13" opacity="0.95">プロテイン</text>
+      <g data-layer="band">
+        <path d="M -50 60 C 70 95, 120 150, 190 185 C 250 215, 320 245, 380 270" fill="none" stroke="#7FA8C9" stroke-opacity="0.18" stroke-width="92" stroke-linecap="round"></path>
+      </g>
+      <g data-layer="ambient" fill="#1A70A8" fill-opacity="0.1">
+        <circle cx="60" cy="240" r="2.5" style="animation: floaty 11s ease-in-out infinite;"></circle>
+        <circle cx="250" cy="80" r="2" style="animation: floaty 13s ease-in-out infinite; animation-delay:-4s;"></circle>
+        <circle cx="150" cy="60" r="2.5" style="animation: floaty 9.5s ease-in-out infinite; animation-delay:-2s;"></circle>
+        <circle cx="270" cy="260" r="2" style="animation: floaty 12s ease-in-out infinite; animation-delay:-7s;"></circle>
+      </g>
+      <g style="offset-path: path('M 240 40 C 210 80, 190 110, 168 148'); offset-distance: 85%; offset-rotate: 0deg; animation: dz-enzyme 7.5s ease-in-out infinite;">
+        <circle cx="0" cy="0" r="3" fill="#1A70A8" opacity="0.9"></circle>
+      </g>
+      <g style="offset-path: path('M 254 52 C 222 90, 200 118, 176 156'); offset-distance: 85%; offset-rotate: 0deg; animation: dz-enzyme 7.5s ease-in-out infinite; animation-delay:-0.45s;">
+        <circle cx="0" cy="0" r="3" fill="#1A70A8" opacity="0.9"></circle>
+      </g>
+      <g style="offset-path: path('M -50 60 C 70 95, 120 150, 190 185 C 250 215, 320 245, 380 270'); offset-distance: 45%; offset-rotate: 0deg; animation: dz-flow 7.5s ease-in-out infinite;" fill="#EF9B0B">
+        <g style="animation: dz-splitA 7.5s ease-in-out infinite;">
+          <circle cx="-6" cy="-5" r="6"></circle>
+          <circle cx="3" cy="-9" r="5.5"></circle>
+          <circle cx="-1" cy="2" r="6"></circle>
+        </g>
+        <g style="animation: dz-splitB 7.5s ease-in-out infinite;">
+          <circle cx="9" cy="-1" r="5.5"></circle>
+          <circle cx="12" cy="8" r="5"></circle>
+        </g>
+        <g style="animation: dz-splitC 7.5s ease-in-out infinite;">
+          <circle cx="-11" cy="6" r="5.5"></circle>
+          <circle cx="-4" cy="12" r="5"></circle>
+          <circle cx="-13" cy="-3" r="4.5"></circle>
+        </g>
+        <g fill="#1A70A8" style="animation: dz-riding 7.5s ease-in-out infinite;" opacity="0.9">
+          <circle cx="4" cy="-2" r="3" fill="#1A70A8"></circle>
+          <circle cx="-7" cy="8" r="3" fill="#1A70A8"></circle>
+        </g>
+      </g>
+    </svg>
+    <span style="position:absolute; right:10px; bottom:8px; font-size:10px; color:#8a97a3;">※イメージ図</span>
+  </div>
+</div>
+</body>
+</html>
