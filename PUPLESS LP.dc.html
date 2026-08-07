@@ -65,16 +65,23 @@
   
 
   <section data-screen-label="①b 定量データ" ref="{{ statsRef }}" style="width:100%;padding:80px 24px 80px;box-sizing:border-box;background:#EAF2F8;display:flex;flex-direction:column;align-items:center">
-    <div style="font-size:13px;letter-spacing:0.1em;color:#1A70A8;font-weight:700;margin-bottom:18px">DATA / 調査データ</div>
-    <h2 style="font-size:26px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px;white-space:nowrap">悩んでいるのは、<br>あなただけではありません。</h2>
-
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:10px">
-      <div style="font-size:68px;font-weight:900;letter-spacing:-0.03em;color:#1A70A8;line-height:1">89.5%</div>
-      <p style="font-size:15px;line-height:1.8;color:#333;text-align:center;margin:0;max-width:280px">プロテインを飲む人の約9割が、<br>お腹の不調を経験しています。</p>
-      
+    <div style="transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ revealO }};transform:translateY({{ revealY }})">
+      <div style="font-size:13px;letter-spacing:0.1em;color:#1A70A8;font-weight:700;margin-bottom:18px">DATA / 調査データ</div>
+    </div>
+    <div style="transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0.29s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0.29s;opacity:{{ revealO }};transform:translateY({{ revealY }})">
+      <h2 style="font-size:26px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px;white-space:nowrap">悩んでいるのは、<br>あなただけではありません。</h2>
     </div>
 
-    <div style="width:100%;background:#fff;border-radius:20px;padding:28px 24px;box-sizing:border-box;margin:28px 0 32px;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="overflow:hidden;padding:0 2px">
+        <div style="font-size:68px;font-weight:900;letter-spacing:-0.03em;color:#1A70A8;line-height:1;transition:transform 1.63s cubic-bezier(0.22,1,0.36,1) 0.6s,opacity 1.63s cubic-bezier(0.22,1,0.36,1) 0.6s;transform:translateY({{ numY }});opacity:{{ revealO }}">89.5%</div>
+      </div>
+      <div style="transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0.98s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0.98s;opacity:{{ revealO }};transform:translateY({{ revealY }})">
+        <p style="font-size:15px;line-height:1.8;color:#333;text-align:center;margin:0;max-width:280px">プロテインを飲む人の約9割が、<br>お腹の不調を経験しています。</p>
+      </div>
+    </div>
+
+    <div ref="{{ statsCardRef }}" style="width:100%;background:#fff;border-radius:20px;padding:28px 24px;box-sizing:border-box;margin:28px 0 32px;display:flex;flex-direction:column;gap:18px">
       <sc-for list="{{ symptomBars }}" as="row" hint-placeholder-count="5">
         <div style="display:flex;flex-direction:column;gap:6px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:#333">
@@ -82,7 +89,7 @@
             <span style="color:#557186">{{ row.count }}名／{{ row.pct }}%</span>
           </div>
           <div data-bar="true" style="width:100%;height:10px;border-radius:999px;background:#EAF2F8;overflow:hidden">
-            <div style="height:100%;border-radius:999px;background:#7FA8C9;width:{{ row.width }};transition:width 1.1s cubic-bezier(0.22,1,0.36,1)"></div>
+            <div style="height:100%;border-radius:999px;background:#7FA8C9;width:{{ row.width }};transition:width 1.95s cubic-bezier(0.22,1,0.36,1) {{ row.delay }}"></div>
           </div>
         </div>
       </sc-for>
@@ -92,35 +99,36 @@
     <div style="font-size:10px;color:#8fa3b3;text-align:center;line-height:1.6">※自社調査／2026年／プロテイン飲用者76名(Lancersパネル)／インターネット調査</div>
   </section>
 
-  <section data-screen-label="② 未来提示" style="width:100%;padding:12px;box-sizing:border-box;background:#fff">
+  <section data-screen-label="② 未来提示" ref="{{ dailySecRef }}" style="width:100%;padding:12px;box-sizing:border-box;background:#fff">
     <div style="width: 100%; box-sizing: border-box; border-radius: 32px; padding: 68px 24px 68px; display: flex; flex-direction: column; align-items: center">
 
-      <div style="font-size:13px;letter-spacing:0.1em;color:#1A70A8;font-weight:700;margin-bottom:18px;width:100%;box-sizing:border-box">PUPLESSのある毎日</div>
-      <h2 style="font-size:31px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:left;line-height:1.55;margin:0 0 32px;width:100%;box-sizing:border-box">積み重ねた分だけ<br>
-なりたい自分へ。</h2>
-      <p style="font-size:15px;line-height:1.9;color:#3d4f5c;text-align:left;margin:0 0 28px;width:100%;box-sizing:border-box">トレーニングも、食事も、続けてきた時間も。<br>
+      <div style="font-size:13px;letter-spacing:0.1em;color:#1A70A8;font-weight:700;margin-bottom:18px;width:100%;box-sizing:border-box;transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ dailyO }};transform:translateY({{ dailyY }})">PUPLESSのある毎日</div>
+      <h2 style="font-size:31px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:left;line-height:1.55;margin:0 0 32px;width:100%;box-sizing:border-box"><span style="display:block;transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0.29s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0.29s;opacity:{{ dailyO }};transform:translateY({{ dailyY }})">積み重ねた分だけ</span><span style="display:block;transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0.57s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0.57s;opacity:{{ dailyO }};transform:translateY({{ dailyY }})">なりたい自分へ。</span></h2>
+      <p style="font-size:15px;line-height:1.9;color:#3d4f5c;text-align:left;margin:0 0 28px;width:100%;box-sizing:border-box;transition:opacity 1.43s cubic-bezier(0.22,1,0.36,1) 0.88s,transform 1.43s cubic-bezier(0.22,1,0.36,1) 0.88s;opacity:{{ dailyO }};transform:translateY({{ dailyY }})">トレーニングも、食事も、続けてきた時間も。<br>
 がんばった分を、一杯残らず自分にしたい。</p>
 
-      <div style="position:relative;width:100%">
+      <div style="position:relative;width:100%;transition:opacity 1.63s cubic-bezier(0.22,1,0.36,1) 1.17s,transform 1.63s cubic-bezier(0.22,1,0.36,1) 1.17s;opacity:{{ dailyO }};transform:translateX({{ dailyX }})">
         <div style="overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;display:flex;gap:16px;margin:0 -36px 20px;padding:0 36px;box-sizing:border-box" onScroll="{{ onDailyScroll }}" ref="{{ dailyRef }}">
           <sc-for list="{{ dailyCards }}" as="card" hint-placeholder-count="3">
             <div style="flex:0 0 300px;scroll-snap-align:center;display:flex;flex-direction:column;gap:14px">
-              <div style="width:300px;height:362px;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(26,112,168,0.08);background:radial-gradient(100% 80% at 80% 15%,#EAF2F8 0%,transparent 50%),linear-gradient(200deg,#7FA8C9 10%,#1A70A8 90%)">
-                <image-slot id="{{ card.id }}" shape="rect" fit="cover" src="{{ card.src }}" placeholder="{{ card.placeholder }}"></image-slot>
+              <div style="width:300px;height:362px;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(26,112,168,0.08);background:radial-gradient(100% 80% at 80% 15%,#EAF2F8 0%,transparent 50%),linear-gradient(200deg,#7FA8C9 10%,#1A70A8 90%);transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ card.cardScale }})">
+                <div style="width:100%;height:100%;transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ card.imgScale }})">
+                  <image-slot id="{{ card.id }}" shape="rect" fit="cover" src="{{ card.src }}" placeholder="{{ card.placeholder }}"></image-slot>
+                </div>
               </div>
               <div style="display:flex;flex-direction:column;gap:10px;width:300px">
                 <div style="font-size:16px;font-weight:700;color:#111">{{ card.lead }}</div>
                 <div style="font-size: 14px; line-height: 1.7; color: #666">{{ card.desc }}</div>
                 <sc-if value="{{ card.link }}">
-                  
+
                 </sc-if>
               </div>
             </div>
           </sc-for>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:10px">
-          <button onClick="{{ onDailyPrev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8">‹</button>
-          <button onClick="{{ onDailyNext }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2)">›</button>
+          <button onClick="{{ onDailyPrev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8; transition: transform 0.23s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">‹</button>
+          <button onClick="{{ onDailyNext }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.23s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">›</button>
         </div>
       </div>
       <div style="height:32px"></div>
@@ -399,13 +407,23 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, barsGrown: false };
+  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false };
 
   handleScroll(e, key, n) {
     const el = e.currentTarget;
     const max = el.scrollWidth - el.clientWidth;
     const idx = max > 0 ? Math.round((el.scrollLeft / max) * (n - 1)) : 0;
-    if (idx !== this.state[key]) this.setState({ [key]: idx });
+    if (idx !== this.state[key]) {
+      this.setState({ [key]: idx });
+      if (key === 'dailyActive') this.pulseDaily();
+    }
+  }
+
+  // Brief scale-in on the newly centered card: 1 -> 1.02 -> 1, both legs eased.
+  pulseDaily() {
+    clearTimeout(this._dailyPulseT);
+    this.setState({ dailyPulse: true });
+    this._dailyPulseT = setTimeout(() => this.setState({ dailyPulse: false }), 480);
   }
 
   scrollTrust(dir) {
@@ -428,19 +446,29 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    const el = this.refs.statsRef;
-    if (!el) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      this.setState({ barsGrown: true });
+    const el = this.refs && this.refs.statsRef;
+    const card = this.refs && this.refs.statsCardRef;
+    const revealAll = () => this.setState({ barsGrown: true, statsIn: true, dailyIn: true });
+    const mq = (q) => window.matchMedia && window.matchMedia(q).matches;
+    if (mq('(prefers-reduced-motion: reduce)') || mq('print') || document.hidden || typeof IntersectionObserver === 'undefined') {
+      revealAll();
       return;
     }
-    const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        this.setState({ barsGrown: true });
-        io.disconnect();
-      }
-    }, { threshold: 0.3 });
-    io.observe(el);
+    window.addEventListener('beforeprint', revealAll);
+    setTimeout(() => { if (document.hidden && !this.state.statsIn) revealAll(); }, 1200);
+    const watch = (node, key) => {
+      if (!node) return;
+      const io = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          this.setState({ [key]: true });
+          io.disconnect();
+        }
+      }, { threshold: 0.25 });
+      io.observe(node);
+    };
+    watch(el, 'statsIn');
+    watch(card, 'barsGrown');
+    watch(this.refs && this.refs.dailySecRef, 'dailyIn');
   }
 
   renderVals() {
@@ -458,8 +486,18 @@ class Component extends DCLogic {
       { id: 'pupless-daily-1', src: './assets/pupless-daily-1.png', placeholder: '手のひらに3粒＋シェイカーとパウチをドロップ', lead: 'プロテインの前に、3粒。', desc: 'いつものプロテインに加えるだけ。難しい準備は要りません。', link: '飲み方の詳細を見る' },
       { id: 'pupless-daily-3', src: './assets/pupless-daily-3.png', placeholder: '生活シーンにパウチが置かれた写真をドロップ', lead: '毎日の習慣に、そっと寄り添う。', desc: '持ち運びやすいパウチで、どこにでも。', link: null },
     ];
+    const pulse = this.state.dailyPulse;
+    const act = this.state.dailyActive;
     return {
-      dailyCards,
+      dailyCards: dailyCards.map((c, i) => ({
+        ...c,
+        cardScale: pulse && i === act ? 1.02 : 1,
+        imgScale: pulse && i === act ? 1.02 : 1,
+      })),
+      dailySecRef: (el) => { this.refs = this.refs || {}; this.refs.dailySecRef = el; },
+      dailyO: this.state.dailyIn ? 1 : 0,
+      dailyY: this.state.dailyIn ? '0px' : '12px',
+      dailyX: this.state.dailyIn ? '0px' : '20px',
       onDailyScroll: (e) => this.handleScroll(e, 'dailyActive', 3),
       onDailyPrev: () => this.scrollDaily(-1),
       onDailyNext: () => this.scrollDaily(1),
@@ -474,7 +512,11 @@ class Component extends DCLogic {
       onCard3Scroll: (e) => this.handleScroll(e, 'card3Active', 3),
       onReviewScroll: (e) => this.handleScroll(e, 'reviewActive', 6),
       statsRef: (el) => { this.refs = this.refs || {}; this.refs.statsRef = el; },
-      symptomBars: symptoms.map((s) => ({ ...s, width: grown ? s.pct + '%' : '0%' })),
+      statsCardRef: (el) => { this.refs = this.refs || {}; this.refs.statsCardRef = el; },
+      revealO: this.state.statsIn ? 1 : 0,
+      revealY: this.state.statsIn ? '0px' : '12px',
+      numY: this.state.statsIn ? '0%' : '110%',
+      symptomBars: symptoms.map((s, i) => ({ ...s, width: grown ? s.pct + '%' : '0%', delay: (i * 0.17).toFixed(2) + 's' })),
     };
   }
 }
