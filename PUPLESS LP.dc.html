@@ -137,26 +137,26 @@
     </div>
   </section>
 
-  <section data-screen-label="③ プロテイン専用設計" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
-    
-    
-    <h2 style="font-size:29px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px">がんばるあなたへ<br>ゼロから設計しました。</h2>
+  <section data-screen-label="③ プロテイン専用設計" ref="{{ designSecRef }}" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
 
-    <div style="width:100%;margin:0 -24px 32px;padding:0 12px;box-sizing:border-box">
+
+    <h2 style="font-size:29px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px"><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ designO }};transform:translateY({{ designY }})">がんばるあなたへ</span><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s;opacity:{{ designO }};transform:translateY({{ designY }})">ゼロから設計しました。</span></h2>
+
+    <div style="width:100%;margin:0 -24px 32px;padding:0 12px;box-sizing:border-box;transform-origin:50% 60%;transition:opacity 2.3s cubic-bezier(0.22,1,0.36,1) 0.85s,transform 2.3s cubic-bezier(0.22,1,0.36,1) 0.85s;opacity:{{ designO }};transform:{{ designProductT }}">
       <img src="uploads/pupless-pouch-cutout-trim.png" alt="PUPLESS パウチ" style="width:100%;display:block">
     </div>
 
-    <p style="font-size:15px;line-height:1.9;color:#555;text-align:center;margin:0 0 44px;width:100%;box-sizing:border-box">一般的な整腸剤は、腸活全般のためのもの。<br>PUPLESSは、プロテインを飲む人だけに<br>向き合ってゼロから設計しました。<br>配合成分については一切妥協しません。</p>
+    <p style="font-size:15px;line-height:1.9;color:#555;text-align:center;margin:0 0 44px;width:100%;box-sizing:border-box;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 2.05s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 2.05s;opacity:{{ designO }};transform:translateY({{ designY }})">一般的な整腸剤は、腸活全般のためのもの。<br>PUPLESSは、プロテインを飲む人だけに<br>向き合ってゼロから設計しました。<br>配合成分については一切妥協しません。</p>
 
-    <h3 style="font-size: 18px; font-weight: 900; letter-spacing: -0.01em; color: #111; text-align: left; line-height: 1.6; margin: 8px 0 20px; width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px">3つの配合設計。<br>その一杯を、しっかり活かす習慣へ。</h3>
+    <h3 ref="{{ formulaHeadRef }}" style="font-size: 18px; font-weight: 900; letter-spacing: -0.01em; color: #111; text-align: left; line-height: 1.6; margin: 8px 0 20px; width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px"><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ formulaO }};transform:translateY({{ formulaY }})">3つの配合設計。</span><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s;opacity:{{ formulaO }};transform:translateY({{ formulaY }})">その一杯を、しっかり活かす習慣へ。</span></h3>
 
-    
 
-    <div style="width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;display:flex;gap:14px;margin:0 -24px 18px;padding:0 24px;box-sizing:border-box" onScroll="{{ onCard3Scroll }}" ref="{{ card3Ref }}">
+
+    <div style="width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;display:flex;gap:14px;margin:0 -24px 18px;padding:0 24px;box-sizing:border-box;transition:opacity 2.1s cubic-bezier(0.22,1,0.36,1) 0.85s,transform 2.1s cubic-bezier(0.22,1,0.36,1) 0.85s;opacity:{{ formulaO }};transform:translateX({{ formulaX }})" onScroll="{{ onCard3Scroll }}" ref="{{ card3Ref }}">
 
       <div style="flex: 0 0 80%; scroll-snap-align: center; background: #F2F7FB; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: 0 2px 12px rgba(26,112,168,0.08)">
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
-          <image-slot id="pupless-formula-1" shape="rect" fit="cover" src="./assets/digezime.png" placeholder="DigeZyme®原料写真をドロップ"></image-slot>
+          <image-slot id="pupless-formula-1" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f1Scale }})" shape="rect" fit="cover" src="./assets/digezime.png" placeholder="DigeZyme®原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 1</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
@@ -168,7 +168,7 @@
 
       <div style="flex:0 0 80%;scroll-snap-align:center;background:#F2F7FB;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 2px 12px rgba(26,112,168,0.08)">
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
-          <image-slot id="pupless-formula-2" shape="rect" fit="cover" src="./assets/micro.png" placeholder="nEF®原料写真をドロップ"></image-slot>
+          <image-slot id="pupless-formula-2" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f2Scale }})" shape="rect" fit="cover" src="./assets/micro.png" placeholder="nEF®原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 2</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
@@ -180,7 +180,7 @@
 
       <div style="flex:0 0 80%;scroll-snap-align:center;background:#F2F7FB;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 2px 12px rgba(26,112,168,0.08)">
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
-          <image-slot id="pupless-formula-3" shape="rect" fit="cover" src="./assets/carbo.png" placeholder="食物繊維原料写真をドロップ"></image-slot>
+          <image-slot id="pupless-formula-3" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f3Scale }})" shape="rect" fit="cover" src="./assets/carbo.png" placeholder="食物繊維原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 3</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
@@ -191,12 +191,12 @@
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:10px;width:100%">
-      <button onClick="{{ onCard3Prev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8">‹</button>
-      <button onClick="{{ onCard3Next }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2)">›</button>
+      <button onClick="{{ onCard3Prev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">‹</button>
+      <button onClick="{{ onCard3Next }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.18s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">›</button>
     </div>
   </section>
 
-  
+
 
   <section data-screen-label="③c 安心の理由" style="width:100%;padding:80px 24px 80px;box-sizing:border-box;background:#EAF2F8;display:flex;flex-direction:column;align-items:center">
     
@@ -293,14 +293,14 @@
 
   
 
-  <section data-screen-label="⑥ クロージング" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
-    <h2 style="font-size:29px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px">明日の一杯から、<br>変えてみませんか。</h2>
-    <div style="font-size:15px;line-height:1.9;color:#555;text-align:center;margin:-16px 0 36px"><p data-pm-slice="1 1 []">プロテインの前に3粒。<br>それだけで、いつもの習慣がもっと続けやすく。</p></div>
-    <div style="width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;margin-bottom:36px;background:radial-gradient(100% 80% at 20% 15%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
+  <section data-screen-label="⑥ クロージング" ref="{{ closeSecRef }}" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
+    <h2 style="font-size:29px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px"><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ closeO }};transform:translateY({{ closeY }})">明日の一杯から、</span><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s;opacity:{{ closeO }};transform:translateY({{ closeY }})">変えてみませんか。</span></h2>
+    <div style="font-size:15px;line-height:1.9;color:#555;text-align:center;margin:-16px 0 36px;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.76s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.76s;opacity:{{ closeO }};transform:translateY({{ closeY }})"><p data-pm-slice="1 1 []">プロテインの前に3粒。<br>それだけで、いつもの習慣がもっと続けやすく。</p></div>
+    <div style="width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;margin-bottom:36px;background:radial-gradient(100% 80% at 20% 15%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8);transform-origin:50% 60%;transition:opacity 2.3s cubic-bezier(0.22,1,0.36,1) 1.05s,transform 2.3s cubic-bezier(0.22,1,0.36,1) 1.05s;opacity:{{ closeO }};transform:{{ closeImgT }}">
       <image-slot id="pupless-closing-photo" shape="rect" fit="cover" src="./assets/pupless-closing-photo.jpg" placeholder="パウチ＋シェイカーの物撮り写真をドロップ"></image-slot>
     </div>
-    <button style="background:#111;color:#fff;border:none;border-radius:999px;height:56px;padding:0 24px;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:15px;width:100%;cursor:pointer;margin-bottom:24px;box-sizing:border-box" style-hover="background:#000">PUPLESSを試してみる</button>
-    
+    <button style="background:#111;color:#fff;border:none;border-radius:999px;height:56px;padding:0 24px;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:15px;width:100%;cursor:pointer;margin-bottom:24px;box-sizing:border-box;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 1.7s,transform 0.18s cubic-bezier(0.22,1,0.36,1);opacity:{{ closeO }}" style-hover="background:#000" style-active="transform:scale(0.97)">PUPLESSを試してみる</button>
+
   </section><section data-screen-label="⑤ ご利用者の声" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
 
 
@@ -407,7 +407,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false };
+  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false, designIn: false, formulaIn: false, card3Pulse: false, closeIn: false };
 
   handleScroll(e, key, n) {
     const el = e.currentTarget;
@@ -416,6 +416,7 @@ class Component extends DCLogic {
     if (idx !== this.state[key]) {
       this.setState({ [key]: idx });
       if (key === 'dailyActive') this.pulseDaily();
+      if (key === 'card3Active') this.pulseCard3();
     }
   }
 
@@ -424,6 +425,12 @@ class Component extends DCLogic {
     clearTimeout(this._dailyPulseT);
     this.setState({ dailyPulse: true });
     this._dailyPulseT = setTimeout(() => this.setState({ dailyPulse: false }), 480);
+  }
+
+  pulseCard3() {
+    clearTimeout(this._card3PulseT);
+    this.setState({ card3Pulse: true });
+    this._card3PulseT = setTimeout(() => this.setState({ card3Pulse: false }), 480);
   }
 
   scrollTrust(dir) {
@@ -448,7 +455,7 @@ class Component extends DCLogic {
   componentDidMount() {
     const el = this.refs && this.refs.statsRef;
     const card = this.refs && this.refs.statsCardRef;
-    const revealAll = () => this.setState({ barsGrown: true, statsIn: true, dailyIn: true });
+    const revealAll = () => this.setState({ barsGrown: true, statsIn: true, dailyIn: true, designIn: true, formulaIn: true, closeIn: true });
     const mq = (q) => window.matchMedia && window.matchMedia(q).matches;
     if (mq('(prefers-reduced-motion: reduce)') || mq('print') || document.hidden || typeof IntersectionObserver === 'undefined') {
       revealAll();
@@ -469,6 +476,9 @@ class Component extends DCLogic {
     watch(el, 'statsIn');
     watch(card, 'barsGrown');
     watch(this.refs && this.refs.dailySecRef, 'dailyIn');
+    watch(this.refs && this.refs.designSecRef, 'designIn');
+    watch(this.refs && this.refs.formulaHeadRef, 'formulaIn');
+    watch(this.refs && this.refs.closeSecRef, 'closeIn');
   }
 
   renderVals() {
@@ -488,7 +498,24 @@ class Component extends DCLogic {
     ];
     const pulse = this.state.dailyPulse;
     const act = this.state.dailyActive;
+    const fp = this.state.card3Pulse;
+    const fa = this.state.card3Active;
     return {
+      designSecRef: (el) => { this.refs = this.refs || {}; this.refs.designSecRef = el; },
+      designO: this.state.designIn ? 1 : 0,
+      designY: this.state.designIn ? '0px' : '12px',
+      designProductT: this.state.designIn ? 'translateY(0px) scale(1)' : 'translateY(24px) scale(0.97)',
+      formulaHeadRef: (el) => { this.refs = this.refs || {}; this.refs.formulaHeadRef = el; },
+      formulaO: this.state.formulaIn ? 1 : 0,
+      formulaY: this.state.formulaIn ? '0px' : '12px',
+      formulaX: this.state.formulaIn ? '0px' : '20px',
+      f1Scale: fp && fa === 0 ? 1.02 : 1,
+      f2Scale: fp && fa === 1 ? 1.02 : 1,
+      f3Scale: fp && fa === 2 ? 1.02 : 1,
+      closeSecRef: (el) => { this.refs = this.refs || {}; this.refs.closeSecRef = el; },
+      closeO: this.state.closeIn ? 1 : 0,
+      closeY: this.state.closeIn ? '0px' : '12px',
+      closeImgT: this.state.closeIn ? 'translateY(0px) scale(1)' : 'translateY(24px) scale(0.97)',
       dailyCards: dailyCards.map((c, i) => ({
         ...c,
         cardScale: pulse && i === act ? 1.02 : 1,
