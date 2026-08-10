@@ -209,13 +209,13 @@
       <div style="flex:0 0 80%;scroll-snap-align:center;background:#fff;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 2px 12px rgba(26,112,168,0.08)">
         <div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:10px">
           <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:#1A70A8">返金保証</div>
-          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">開封後でも、<br>30日間全額返金。</div>
+          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">開封後でも、<br>90日間全額返金。</div>
           <div style="font-size:14px;line-height:1.8;color:#555">万が一ご満足いただけなかった場合は、全額返金します。</div>
         </div>
         <div style="flex:1;min-height:36px"></div>
         <div style="position:relative;width:100%;aspect-ratio:1/1;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
           <image-slot id="pupless-trust-1" shape="rect" fit="cover" src="./assets/pupless-trust-1.jpg" placeholder="パウチ写真をドロップ"></image-slot>
-          <a href="#" aria-label="返金保証の詳細を見る" style="position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; text-decoration: none; background-color: #1A70A8">＋</a>
+          <button onClick="{{ openRefundModal }}" type="button" aria-label="返金保証の詳細を見る" style="position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; border: none; color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: #1A70A8">＋</button>
           
         </div>
       </div>
@@ -277,10 +277,10 @@
       <div style="display:flex;flex-direction:column;gap:10px;align-self:flex-start;margin-bottom:18px">
         <div style="display:flex;align-items:center;gap:9px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size:13px;color:#3d4f5c">全国送料無料</span></div>
         <div style="display:flex;align-items:center;gap:9px"></div>
-        <div style="display:flex;align-items:flex-start;gap:9px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size:13px;line-height:1.7;color:#3d4f5c">30日間全額返金保証（開封後も対象・返送送料当社負担）</span></div>
+        <div style="display:flex;align-items:flex-start;gap:9px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size:13px;line-height:1.7;color:#3d4f5c">90日間全額返金保証（開封後も対象・返送送料当社負担）</span></div>
         <div style="display:flex;align-items:center;gap:9px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size:13px;color:#3d4f5c">回数縛りなし・いつでも解約OK</span></div>
       </div>
-      <div style="font-size:11px;line-height:1.8;color:#777;align-self:flex-start">解約は次回発送予定日の7日前までに、お問い合わせから可能です。</div>
+      <div style="font-size:11px;line-height:1.8;color:#777;align-self:flex-start">解約は次回発送予定日の10日前までに、お問い合わせから可能です。</div>
     </div>
 
     <div style="width:100%;box-sizing:border-box;background:#fff;border-radius:22px;padding:28px 24px;box-shadow:0 4px 16px rgba(26,112,168,0.08);display:flex;flex-direction:column;align-items:center">
@@ -369,7 +369,7 @@
       </details>
       <details style="border-bottom:1px solid #DDDBD5">
         <summary style="list-style:none;display:flex;align-items:center;gap:14px;padding:20px 0;cursor:pointer;font-size:14px;font-weight:500;color:#111;line-height:1.7"><span style="flex:1">返金保証はありますか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex:none"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
-        <div style="padding:0 0 20px;font-size:13px;line-height:1.9;color:#555">開封後でも、30日間の全額返金保証をご用意しています。万が一ご満足いただけなかった場合は、カスタマーサポートまでご連絡ください。詳しい適用条件は［返金保証の詳細ページ］をご確認ください。</div>
+        <div style="padding:0 0 20px;font-size:13px;line-height:1.9;color:#555">開封後でも、90日間の全額返金保証をご用意しています。万が一ご満足いただけなかった場合は、カスタマーサポートまでご連絡ください。詳しい適用条件は<a href="./tokushoho.dc.html" style="color:#1A70A8;text-decoration:underline">「特定商取引法に基づく表示」</a>をご確認ください。</div>
       </details>
       <details style="border-bottom:1px solid #DDDBD5">
         <summary style="list-style:none;display:flex;align-items:center;gap:14px;padding:20px 0;cursor:pointer;font-size:14px;font-weight:500;color:#111;line-height:1.7"><span style="flex:1">定期コースはいつでも解約できますか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex:none"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
@@ -388,13 +388,59 @@
     <div style="font-size:11px;color:#999">© 2026 PUPLESS</div>
   </footer>
 
-  
+  <sc-if value="{{ refundModalOpen }}">
+    <div onClick="{{ closeRefundModal }}" style="position:fixed;inset:0;background:rgba(40,40,40,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box">
+      <div onClick="{{ stopPropagation }}" style="width:100%;max-width:353px;background:#fff;border-radius:24px;padding:36px 26px 28px;box-sizing:border-box;max-height:86vh;overflow-y:auto;position:relative;display:flex;flex-direction:column;align-items:center">
+        <button onClick="{{ closeRefundModal }}" type="button" aria-label="閉じる" style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:#999;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">✕</button>
+
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#1A70A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-bottom:18px">
+          <path d="M26 5l16.5 5.5v13C42.5 34.5 35.5 42 26 46.5 16.5 42 9.5 34.5 9.5 23.5v-13L26 5z"></path>
+          <path d="M18.5 25.5l5.5 5.5 10-11"></path>
+        </svg>
+
+        <h3 style="font-size:20px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.5;margin:0 0 14px">90日間の全額返金保証について</h3>
+        <p style="font-size:12.5px;line-height:1.8;color:#777;text-align:center;margin:0">開封後・使い切った後でも、<br>ご満足いただけなければ商品代金を全額返金します。</p>
+
+        <div style="width:100%;display:flex;flex-direction:column">
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">対象：</strong>単品購入・定期購入のどちらも対象です</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">期間：</strong>商品お受け取りから90日以内のお申し出</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">返金額：</strong>商品代金の全額（送料無料のため、実質お支払い全額）</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">返送料：</strong>当方が負担します</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">定期購入の場合：</strong>直近3ヶ月分のお届けを上限に返金します</div>
+          </div>
+        </div>
+
+        <div style="width:100%;background:#F2F7FB;border-radius:16px;padding:18px 18px;box-sizing:border-box;margin-top:8px;display:flex;gap:12px;align-items:flex-start">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="1.5" y="4" width="15" height="10" rx="2"></rect><path d="M2 4.8l7 5.5 7-5.5"></path></svg>
+          <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#1A70A8">申請方法：</strong>メール（<a href="mailto:info@mrlongman.com" style="color:#1A70A8;font-weight:700;word-break:break-all">info@mrlongman.com</a>）にてご連絡ください。折り返し手順をご案内します。</div>
+        </div>
+
+        <div style="font-size:11px;line-height:1.7;color:#999;text-align:center;margin-top:16px">※詳しい適用条件は<a href="./tokushoho.dc.html" style="color:#999;text-decoration:underline">「特定商取引法に基づく表示」</a>をご確認ください。</div>
+      </div>
+    </div>
+  </sc-if>
+
+
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, trustActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false, designIn: false, formulaIn: false, card3Pulse: false, closeIn: false };
+  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, trustActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false, designIn: false, formulaIn: false, card3Pulse: false, closeIn: false, refundModalOpen: false };
 
   handleScroll(e, key, n) {
     const el = e.currentTarget;
@@ -418,6 +464,14 @@ class Component extends DCLogic {
     clearTimeout(this._card3PulseT);
     this.setState({ card3Pulse: true });
     this._card3PulseT = setTimeout(() => this.setState({ card3Pulse: false }), 480);
+  }
+
+  openRefundModal() {
+    this.setState({ refundModalOpen: true });
+  }
+
+  closeRefundModal() {
+    this.setState({ refundModalOpen: false });
   }
 
   scrollTrust(dir) {
@@ -538,6 +592,10 @@ class Component extends DCLogic {
       trustNextBg: trustArrows.nextBg,
       trustNextColor: trustArrows.nextColor,
       trustRef: (el) => { this.refs = this.refs || {}; this.refs.trustRef = el; },
+      refundModalOpen: this.state.refundModalOpen,
+      openRefundModal: () => this.openRefundModal(),
+      closeRefundModal: () => this.closeRefundModal(),
+      stopPropagation: (e) => e.stopPropagation(),
       onCard3Prev: () => this.scrollCard3(-1),
       onCard3Next: () => this.scrollCard3(1),
       card3PrevBg: card3Arrows.prevBg,
