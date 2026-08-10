@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>PUPLESS｜プロテインを飲む人のための消化サポートサプリ</title>
+<meta name="description" content="プロテインでお腹が気になる方へ。PUPLESSは消化に配慮し、プロテインを飲む人だけに向き合って設計したサプリメントです。DIGEZYME®・ナノ型乳酸菌・食物繊維を配合。定期初回2,480円（税込）、90日間全額返金保証。">
+
+<!-- TODO: 公開URL確定後に canonical / og:url のコメントを外して実URLを入れる
+<link rel="canonical" href="https://example.com/">
+<meta property="og:url" content="https://example.com/">
+-->
+
+<meta property="og:url" content="https://example.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PUPLESS">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="PUPLESS｜プロテインを飲む人のための消化サポートサプリ">
+<meta property="og:description" content="プロテインは続けたい。お腹は気にしたくない。消化に配慮し、プロテインを飲む人だけに向き合って設計したサプリメントです。">
+<meta property="og:image" content="img/pupless-hero-bg.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231A70A8'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='20' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preload" as="image" href="img/pupless-hero-bg.avif" type="image/avif" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+
+<style>
+    body { margin: 0; background: #ececec; }
+    a { color: #183B67; }
+    a:hover { color: #0f2646; }
+    @keyframes dz-flow { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 90% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes dz-splitA { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(-13px,-9px) scale(0.82); } }
+    @keyframes dz-splitB { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(16px,6px) scale(0.82); } }
+    @keyframes dz-splitC { 0%, 48% { transform: translate(0px,0px) scale(1); } 72%, 100% { transform: translate(-14px,14px) scale(0.82); } }
+    @keyframes dz-enzyme { 0% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 38% { offset-distance: 100%; opacity: 1; } 48% { offset-distance: 100%; opacity: 0; } 100% { offset-distance: 100%; opacity: 0; } }
+    @keyframes dz-riding { 0%, 40% { opacity: 0; } 50%, 88% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes fib-drift { 0%, 100% { transform: translate(0px,0px); } 50% { transform: translate(6px,-5px); } }
+    @keyframes fib-strand-pulse { 0%, 40% { opacity: 0.8; } 58%, 70% { opacity: 1; } 88%, 100% { opacity: 0.8; } }
+    @keyframes fib-grow { 0%, 48% { opacity: 0; transform: scale(0.4); } 64%, 88% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+    @keyframes dz-floaty { 0%, 100% { transform: translate(0px,0px); } 50% { transform: translate(5px,-11px); } }
+    @keyframes nef2-dropL { 0% { transform: translateY(-230px); opacity: 0; } 8% { opacity: 1; } 42% { transform: translateY(0px); } 55% { transform: translateY(-4px); } 68% { transform: translateY(0px); } 88% { opacity: 1; transform: translateY(0px); } 100% { opacity: 0; transform: translateY(0px); } }
+    @keyframes nef2-pass { 0% { transform: translateY(-250px) translateX(0px); opacity: 0; } 7% { opacity: 0.95; } 25% { transform: translateY(-180px) translateX(4px); } 45% { transform: translateY(-90px) translateX(-4px); } 60% { transform: translateY(0px) translateX(2px); opacity: 0.9; } 80% { transform: translateY(30px) translateX(0px); opacity: 0; } 100% { transform: translateY(30px) translateX(0px); opacity: 0; } }
+    @keyframes dz-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+    @keyframes dz-wavedrift { 0%, 100% { transform: translateX(0px); } 50% { transform: translateX(-8px); } }
+    @media (prefers-reduced-motion: reduce) { svg[data-dz] * { animation: none !important; } [data-bar] div { transition: none !important; } }
+  </style>
+<style>
+html,body{height:100%;margin:0}
+body{background:#ececec}
+a{color:#183B67}
+a:hover{color:#0f2646}
+
+/* dc-runtime の .scpN:hover{…!important} (insertRule でCSSOM直挿入されており
+   outerHTML に出てこなかった) を実CSSとして移植 */
+.cta-dark:hover{background:#000 !important}
+.cta-outline:hover{background:#f5f5f5 !important}
+.carousel-btn:active{transform:scale(0.88) !important}
+.cta-close:active{transform:scale(0.97) !important}
+
+/* 横スクローラのスクロールバー非表示 (元の scrollbar-width:none の意図を webkit にも) */
+[data-carousel]::-webkit-scrollbar{display:none}
+
+/* --- reveal ---
+   HTMLには「表示済み(最終)状態」が焼き付けてある。JSが動く時だけ初期状態に
+   引き戻してからアニメさせる。よって JS が落ちても内容は必ず見える。 */
+.js [data-rv]:not([data-rv="w"]):not(.is-in){opacity:0 !important}
+.js [data-rv="y"]:not(.is-in){transform:translateY(12px) !important}
+.js [data-rv="x"]:not(.is-in){transform:translateX(20px) !important}
+.js [data-rv="s"]:not(.is-in){transform:translateY(24px) scale(0.97) !important}
+.js [data-rv="n"]:not(.is-in){transform:translateY(110%) !important}
+.js [data-rv="w"]:not(.is-in){width:0 !important}
+
+picture{display:contents}
+#refund-modal[hidden]{display:none !important}
+
+/* --- Phase 2: モバイル対応 ---------------------------------------
+   ルートは max-width:393px。393px以上では従来と完全に同じ見え方を保ち、
+   393px未満だけを可変にして横スクロールを解消する。
+   （480px等へ広げるのは「見え方が変わる」設計変更なので別途判断） */
+@media (max-width: 392px){
+  /* 見出しの nowrap は 393px 前提。狭い画面では折り返して溢れを止める。
+     .nw は 393px 以上では触らないので従来表示は不変。 */
+  .nw{ white-space: normal !important; }
+
+  /* ただし折り返しに任せると 30px の見出しが「…続けた／い。」と1文字だけ
+     落ちて崩れ、さらに FV では絶対配置のテキストが下に押し出されて写真に
+     重なる。393px設計の字面を保つため、狭い画面では等比で縮める。
+     係数は 30/393=7.63vw, 26/393=6.62vw（=393pxでちょうど元のサイズ）。 */
+  h1.nw{ font-size: clamp(21px, 7.63vw, 30px) !important; }
+  h2.nw{ font-size: clamp(17px, 6.62vw, 26px) !important;
+         padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+</style>
+
+<script>document.documentElement.className='js';</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "PUPLESS",
+      "email": "info@mrlongman.com",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "150-0021",
+        "addressRegion": "東京都",
+        "addressLocality": "渋谷区",
+        "streetAddress": "恵比寿西2丁目4番8号 ウィンド恵比寿ビル8F",
+        "addressCountry": "JP"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "PUPLESS",
+      "description": "プロテインを飲む人のために設計した消化サポートサプリメント。DIGEZYME®・ナノ型乳酸菌・食物繊維を配合。",
+      "brand": { "@type": "Brand", "name": "PUPLESS" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "単品購入（30日分・90粒）",
+          "price": "3980",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "定期購入 初回（30日分・90粒／2回目以降 ¥3,480）",
+          "price": "2480",
+          "priceCurrency": "JPY",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "いつ飲めばいいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "いつものプロテインを飲む前に、3粒を目安にお召し上がりください。タイミングを決めておくと習慣にしやすくなります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "1日にどのくらい飲めばいいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "1日3粒を目安にしています。まずは3ヶ月お試しいただくことをお勧めしています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "いつものプロテインと一緒に飲んでも大丈夫ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。PUPLESSは、普段のプロテイン習慣に加えていただくことを考えて設計したサプリメントです。プロテインの種類を問わず、いつもの習慣にプラスしてご利用いただけます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "市販の整腸剤とは何が違うのですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "PUPLESSは、プロテイン習慣を続けたい方に向けて成分を選び、設計したサプリメントです。" }
+        },
+        {
+          "@type": "Question",
+          "name": "副作用やリスクはありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "PUPLESSは食品（サプリメント）です。体質に合わない場合や、持病のある方・お薬を服用中の方は、お召し上がりの前に医師にご相談ください。" }
+        },
+        {
+          "@type": "Question",
+          "name": "返金保証はありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "開封後でも、90日間の全額返金保証をご用意しています。万が一ご満足いただけなかった場合は、カスタマーサポートまでご連絡ください。詳しい適用条件は「特定商取引法に基づく表示」をご確認ください。" }
+        },
+        {
+          "@type": "Question",
+          "name": "定期コースはいつでも解約できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "回数の縛りはありません。次回お届け予定日の10日前までにマイページからお手続きいただけます。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- TODO: Google広告タグ。発行された測定IDに置き換えてコメントを外す。
+     async なので LCP をブロックしない。
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+</script>
+-->
+</head>
+<body>
+
+<div style="width: 100%; max-width: 393px; margin: 0px auto; font-family: &quot;Noto Sans JP&quot;, sans-serif; background: rgb(255, 255, 255);">
+
+  <header style="width: 100%; height: 56px; background: rgb(250, 251, 252); border-bottom: 1px solid rgb(230, 230, 230); display: flex; align-items: center; padding: 0px 20px; box-sizing: border-box;">
+    <span style="font-weight: 800; font-size: 20px; letter-spacing: 0.12em; color: rgb(24, 59, 103);">PUPLESS</span>
+  </header>
+
+  <section style="width: 100%; min-height: 795px; position: relative; overflow: hidden; background: rgb(242, 240, 238);">
+
+  <picture><source srcset="img/pupless-hero-bg.avif" type="image/avif"><img width="786" height="1703" loading="eager" fetchpriority="high" decoding="async" id="pupless-hero-bg" src="img/pupless-hero-bg.jpg" alt="シェイカーとPUPLESSのパウチ" style="position: absolute; inset: 0px; width: 100%; height: 100%; z-index: 0; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+
+  <div style="position: absolute; inset: 0px; z-index: 1; padding: 20px 24px 0px; display: flex; flex-direction: column; align-items: center; pointer-events: none;">
+
+    <div style="font-size: 14px; letter-spacing: 0.04em; color: rgb(26, 112, 168); text-align: center; margin-bottom: 14px;">プロテイン専用サポートサプリ PUPLESS</div>
+
+    <h1 class="nw" style="font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 900; font-size: 30px; line-height: 1.5; letter-spacing: -0.02em; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 16px; white-space: nowrap;">
+      プロテインは続けたい。<br>お腹は気にしたくない。
+    </h1>
+
+    <p style="font-size: 15px; line-height: 1.75; color: rgb(85, 85, 85); text-align: center; margin: 0px 0px 18px;">
+      お腹の負担をサポートし、<br>プロテインをもっと快適な習慣へ。
+    </p>
+
+    <a href="#" class="cta-dark" data-cta="hero" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; padding: 17px 26px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; margin-bottom: 24px; white-space: nowrap; pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
+
+    <div style="text-align: center; color: rgb(51, 51, 51); font-size: 12px; line-height: 1.8;">定期初回 ¥2,480(税込)<br>1日あたり約80円</div>
+
+  </div>
+  </section>
+
+  
+
+  <section style="width: 100%; padding: 80px 24px; box-sizing: border-box; background: rgb(234, 242, 248); display: flex; flex-direction: column; align-items: center;" data-rv-t="stats">
+    <div style="transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1), transform 1.43s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="stats">
+      <div style="font-size: 13px; letter-spacing: 0.1em; color: rgb(26, 112, 168); font-weight: 700; margin-bottom: 18px;">DATA / 調査データ</div>
+    </div>
+    <div style="transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.29s, transform 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.29s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="stats">
+      <h2 class="nw" style="font-size: 26px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: center; line-height: 1.55; margin: 0px 0px 32px; white-space: nowrap;">悩んでいるのは、<br>あなただけではありません。</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 10px;">
+      <div style="overflow: hidden; padding: 0px 2px;">
+        <div style="font-size: 68px; font-weight: 900; letter-spacing: -0.03em; color: rgb(26, 112, 168); line-height: 1; transition: transform 1.63s cubic-bezier(0.22, 1, 0.36, 1) 0.6s, opacity 1.63s cubic-bezier(0.22, 1, 0.36, 1) 0.6s; transform: translateY(0%); opacity: 1;" data-rv="n" data-rv-g="stats">89.5%</div>
+      </div>
+      <div style="transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.98s, transform 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.98s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="stats">
+        <p style="font-size: 15px; line-height: 1.8; color: rgb(51, 51, 51); text-align: center; margin: 0px; max-width: 280px;">プロテインを飲む人の約9割が、<br>お腹の不調を経験しています。</p>
+      </div>
+    </div>
+
+    <div style="width: 100%; background: rgb(255, 255, 255); border-radius: 20px; padding: 28px 24px; box-sizing: border-box; margin: 28px 0px 32px; display: flex; flex-direction: column; gap: 18px;">
+      
+        <div style="display: flex; flex-direction: column; gap: 6px;" data-rv-t="bars">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgb(51, 51, 51);">
+            <span><span class="sc-interp">下痢・軟便</span></span>
+            <span style="color: rgb(85, 113, 134);"><span class="sc-interp">24</span>名／<span class="sc-interp">35</span>%</span>
+          </div>
+          <div data-bar="true" style="width: 100%; height: 10px; border-radius: 999px; background: rgb(234, 242, 248); overflow: hidden;">
+            <div style="height: 100%; border-radius: 999px; background: rgb(127, 168, 201); width: 35%; transition: width 1.95s cubic-bezier(0.22, 1, 0.36, 1);" data-rv="w" data-rv-g="bars"></div>
+          </div>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgb(51, 51, 51);">
+            <span><span class="sc-interp">おなら・ガス</span></span>
+            <span style="color: rgb(85, 113, 134);"><span class="sc-interp">18</span>名／<span class="sc-interp">26</span>%</span>
+          </div>
+          <div data-bar="true" style="width: 100%; height: 10px; border-radius: 999px; background: rgb(234, 242, 248); overflow: hidden;">
+            <div style="height: 100%; border-radius: 999px; background: rgb(127, 168, 201); width: 26%; transition: width 1.95s cubic-bezier(0.22, 1, 0.36, 1) 0.17s;" data-rv="w" data-rv-g="bars"></div>
+          </div>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgb(51, 51, 51);">
+            <span><span class="sc-interp">お腹の張り</span></span>
+            <span style="color: rgb(85, 113, 134);"><span class="sc-interp">12</span>名／<span class="sc-interp">18</span>%</span>
+          </div>
+          <div data-bar="true" style="width: 100%; height: 10px; border-radius: 999px; background: rgb(234, 242, 248); overflow: hidden;">
+            <div style="height: 100%; border-radius: 999px; background: rgb(127, 168, 201); width: 18%; transition: width 1.95s cubic-bezier(0.22, 1, 0.36, 1) 0.34s;" data-rv="w" data-rv-g="bars"></div>
+          </div>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgb(51, 51, 51);">
+            <span><span class="sc-interp">便秘</span></span>
+            <span style="color: rgb(85, 113, 134);"><span class="sc-interp">8</span>名／<span class="sc-interp">12</span>%</span>
+          </div>
+          <div data-bar="true" style="width: 100%; height: 10px; border-radius: 999px; background: rgb(234, 242, 248); overflow: hidden;">
+            <div style="height: 100%; border-radius: 999px; background: rgb(127, 168, 201); width: 12%; transition: width 1.95s cubic-bezier(0.22, 1, 0.36, 1) 0.51s;" data-rv="w" data-rv-g="bars"></div>
+          </div>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgb(51, 51, 51);">
+            <span><span class="sc-interp">その他</span></span>
+            <span style="color: rgb(85, 113, 134);"><span class="sc-interp">6</span>名／<span class="sc-interp">9</span>%</span>
+          </div>
+          <div data-bar="true" style="width: 100%; height: 10px; border-radius: 999px; background: rgb(234, 242, 248); overflow: hidden;">
+            <div style="height: 100%; border-radius: 999px; background: rgb(127, 168, 201); width: 9%; transition: width 1.95s cubic-bezier(0.22, 1, 0.36, 1) 0.68s;" data-rv="w" data-rv-g="bars"></div>
+          </div>
+        </div>
+      
+    </div>
+
+    
+    <div style="font-size: 10px; color: rgb(143, 163, 179); text-align: center; line-height: 1.6;">※自社調査／2026年／プロテイン飲用者76名(Lancersパネル)／インターネット調査</div>
+  </section>
+
+  <section style="width: 100%; padding: 12px; box-sizing: border-box; background: rgb(255, 255, 255);" data-rv-t="daily">
+    <div style="width: 100%; box-sizing: border-box; border-radius: 32px; padding: 68px 24px; display: flex; flex-direction: column; align-items: center;">
+
+      <div style="font-size: 13px; letter-spacing: 0.1em; color: rgb(26, 112, 168); font-weight: 700; margin-bottom: 18px; width: 100%; box-sizing: border-box; transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1), transform 1.43s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="daily">PUPLESSのある毎日</div>
+      <h2 style="font-size: 31px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: left; line-height: 1.55; margin: 0px 0px 32px; width: 100%; box-sizing: border-box;"><span style="display: block; transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.29s, transform 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.29s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="daily">積み重ねた分だけ</span><span style="display: block; transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.57s, transform 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.57s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="daily">なりたい自分へ。</span></h2>
+      <p style="font-size: 15px; line-height: 1.9; color: rgb(61, 79, 92); text-align: left; margin: 0px 0px 28px; width: 100%; box-sizing: border-box; transition: opacity 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.88s, transform 1.43s cubic-bezier(0.22, 1, 0.36, 1) 0.88s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="daily">トレーニングも、食事も、続けてきた時間も。<br>
+がんばった分を、一杯残らず自分にしたい。</p>
+
+      <div style="position: relative; width: 100%; transition: opacity 1.63s cubic-bezier(0.22, 1, 0.36, 1) 1.17s, transform 1.63s cubic-bezier(0.22, 1, 0.36, 1) 1.17s; opacity: 1; transform: translateX(0px);" data-rv="x" data-rv-g="daily">
+        <div style="overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; display: flex; gap: 16px; margin: 0px -36px 20px; padding: 0px 36px; box-sizing: border-box;" data-carousel="daily">
+          
+            <div style="flex: 0 0 300px; scroll-snap-align: center; display: flex; flex-direction: column; gap: 14px;">
+              <div style="width: 300px; height: 362px; border-radius: 16px; overflow: hidden; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 10px; background: radial-gradient(100% 80% at 80% 15%, rgb(234, 242, 248) 0%, transparent 50%), linear-gradient(200deg, rgb(127, 168, 201) 10%, rgb(26, 112, 168) 90%); transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                <div style="width: 100%; height: 100%; transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                  <picture><source srcset="img/pupless-daily-2.avif" type="image/avif"><img width="600" height="749" loading="lazy" decoding="async" id="pupless-daily-2" src="img/pupless-daily-2.jpg" alt="プロテインを飲む瞬間" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px; width: 300px;">
+                <div style="font-size: 16px; font-weight: 700; color: rgb(17, 17, 17);"><span class="sc-interp">いつもの一杯を、いつも通りに。</span></div>
+                <div style="font-size: 14px; line-height: 1.7; color: rgb(102, 102, 102);"><span class="sc-interp">お腹の負担を気にせず、続けたい習慣をそのままに。</span></div>
+                
+
+                
+              </div>
+            </div>
+          
+            <div style="flex: 0 0 300px; scroll-snap-align: center; display: flex; flex-direction: column; gap: 14px;">
+              <div style="width: 300px; height: 362px; border-radius: 16px; overflow: hidden; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 10px; background: radial-gradient(100% 80% at 80% 15%, rgb(234, 242, 248) 0%, transparent 50%), linear-gradient(200deg, rgb(127, 168, 201) 10%, rgb(26, 112, 168) 90%); transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                <div style="width: 100%; height: 100%; transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                  <picture><source srcset="img/pupless-daily-1.avif" type="image/avif"><img width="600" height="749" loading="lazy" decoding="async" id="pupless-daily-1" src="img/pupless-daily-1.jpg" alt="手のひらにのせたPUPLESSの3粒とシェイカー、パウチ" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px; width: 300px;">
+                <div style="font-size: 16px; font-weight: 700; color: rgb(17, 17, 17);"><span class="sc-interp">プロテインの前に、3粒。</span></div>
+                <div style="font-size: 14px; line-height: 1.7; color: rgb(102, 102, 102);"><span class="sc-interp">いつものプロテインに加えるだけ。難しい準備は要りません。</span></div>
+                
+
+                
+              </div>
+            </div>
+          
+            <div style="flex: 0 0 300px; scroll-snap-align: center; display: flex; flex-direction: column; gap: 14px;">
+              <div style="width: 300px; height: 362px; border-radius: 16px; overflow: hidden; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 10px; background: radial-gradient(100% 80% at 80% 15%, rgb(234, 242, 248) 0%, transparent 50%), linear-gradient(200deg, rgb(127, 168, 201) 10%, rgb(26, 112, 168) 90%); transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                <div style="width: 100%; height: 100%; transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1);">
+                  <picture><source srcset="img/pupless-daily-3.avif" type="image/avif"><img width="600" height="800" loading="lazy" decoding="async" id="pupless-daily-3" src="img/pupless-daily-3.jpg" alt="生活シーンに置かれたPUPLESSのパウチ" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px; width: 300px;">
+                <div style="font-size: 16px; font-weight: 700; color: rgb(17, 17, 17);"><span class="sc-interp">毎日の習慣に、そっと寄り添う。</span></div>
+                <div style="font-size: 14px; line-height: 1.7; color: rgb(102, 102, 102);"><span class="sc-interp">持ち運びやすいパウチで、どこにでも。</span></div>
+                
+              </div>
+            </div>
+          
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button aria-label="前へ" class="carousel-btn" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(26, 112, 168); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.12) 0px 1px 4px; background-color: rgb(234, 242, 248); transition: transform 0.23s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.23s, color 0.23s;" data-arrow="daily" data-dir="-1">‹</button>
+          <button aria-label="次へ" class="carousel-btn" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.2) 0px 1px 4px; transition: transform 0.23s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.23s, color 0.23s;" data-arrow="daily" data-dir="1">›</button>
+        </div>
+      </div>
+      <div style="height: 32px;"></div>
+
+      <p style="font-size: 15px; line-height: 1.9; color: rgb(61, 79, 92); text-align: center; margin: 0px;">PUPLESSは消化に配慮し、いつもの一杯を続けやすく。<br>なりたい自分をつくるあなたの力になります。</p>
+    </div>
+  </section>
+
+  <section style="width: 100%; padding: 80px 24px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;" data-rv-t="design">
+
+
+    <h2 style="font-size: 29px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: center; line-height: 1.55; margin: 0px 0px 32px;"><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1), transform 1.85s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="design">がんばるあなたへ</span><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s, transform 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="design">ゼロから設計しました。</span></h2>
+
+    <div style="width: 100%; margin: 0px -24px 32px; padding: 0px 12px; box-sizing: border-box; transform-origin: 50% 60%; transition: opacity 2.3s cubic-bezier(0.22, 1, 0.36, 1) 0.85s, transform 2.3s cubic-bezier(0.22, 1, 0.36, 1) 0.85s; opacity: 1; transform: translateY(0px) scale(1);" data-rv="s" data-rv-g="design">
+      <picture><source srcset="img/pupless-pouch-cutout-trim.avif" type="image/avif"><img width="642" height="869" loading="lazy" decoding="async" src="img/pupless-pouch-cutout-trim.jpg" alt="PUPLESS パウチ" style="width: 100%; display: block; height: auto; aspect-ratio: 823 / 1115;"></picture>
+    </div>
+
+    <p style="font-size: 15px; line-height: 1.9; color: rgb(85, 85, 85); text-align: center; margin: 0px 0px 44px; width: 100%; box-sizing: border-box; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 2.05s, transform 1.85s cubic-bezier(0.22, 1, 0.36, 1) 2.05s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="design">一般的な整腸剤は、腸活全般のためのもの。<br>PUPLESSは、プロテインを飲む人だけに<br>向き合ってゼロから設計しました。<br>配合成分については<strong style="color: rgb(17, 17, 17);">一切妥協しません。</strong></p>
+
+    <h3 style="font-size: 18px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: left; line-height: 1.6; margin: 8px 0px 20px; width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px;" data-rv-t="formula"><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1), transform 1.85s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="formula">3つの配合設計。</span><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s, transform 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="formula">その一杯を、しっかり活かす習慣へ。</span></h3>
+
+
+
+    <div style="width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; display: flex; gap: 14px; margin: 0px -24px 18px; padding: 0px 24px; box-sizing: border-box; transition: opacity 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s, transform 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s; opacity: 1; transform: translateX(0px);" data-rv="x" data-rv-g="formula" data-carousel="formula">
+
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(242, 247, 251); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3 / 4; flex-shrink: 0; background: radial-gradient(90% 80% at 70% 20%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168));">
+          <picture><source srcset="img/digezime.avif" type="image/avif"><img width="520" height="648" loading="lazy" decoding="async" id="pupless-formula-1" src="img/digezime.jpg" alt="DIGEZYME®の原料イメージ" style="transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1); position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          <div style="position: absolute; top: 16px; left: 16px; color: rgb(26, 112, 168); font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: rgb(234, 242, 248);">POINT 1</div>
+          <div style="position: absolute; right: 10px; bottom: 10px; color: rgb(255, 255, 255); font-size: 10px; letter-spacing: 0.02em; text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; pointer-events: none;">画像はイメージです</div>
+        </div>
+        <div style="padding: 24px 24px 30px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">DIGEZYME®</div>
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">プロテインのための<br>発酵酵素原料</div>
+          <div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);">タンパク質にはたらく酵素をはじめ、5種の活性を持つDIGEZYME®を配合しました。</div>
+        </div>
+      </div>
+
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(242, 247, 251); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3 / 4; flex-shrink: 0; background: radial-gradient(90% 80% at 70% 20%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168));">
+          <picture><source srcset="img/micro.avif" type="image/avif"><img width="520" height="649" loading="lazy" decoding="async" id="pupless-formula-2" src="img/micro.jpg" alt="ナノ型乳酸菌 nEF® の原料イメージ" style="transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1); position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          <div style="position: absolute; top: 16px; left: 16px; color: rgb(26, 112, 168); font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: rgb(234, 242, 248);">POINT 2</div>
+          <div style="position: absolute; right: 10px; bottom: 10px; color: rgb(255, 255, 255); font-size: 10px; letter-spacing: 0.02em; text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; pointer-events: none;">画像はイメージです</div>
+        </div>
+        <div style="padding: 24px 24px 30px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">nEF®</div>
+          
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">毎日続けるための<br>ナノ型乳酸菌</div><div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);"><span style="color: rgb(85, 85, 85); font-size: 14px;">特許製法（第4540376号）のナノ型乳酸菌を、プロテイン習慣のために配合しました。</span></div>
+        </div>
+      </div>
+
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(242, 247, 251); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="position: relative; width: 100%; aspect-ratio: 3 / 4; flex-shrink: 0; background: radial-gradient(90% 80% at 70% 20%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168));">
+          <picture><source srcset="img/carbo.avif" type="image/avif"><img width="520" height="692" loading="lazy" decoding="async" id="pupless-formula-3" src="img/carbo.jpg" alt="食物繊維の原料イメージ" style="transition: transform 1.23s cubic-bezier(0.22, 1, 0.36, 1); transform: scale(1); position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          <div style="position: absolute; top: 16px; left: 16px; color: rgb(26, 112, 168); font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: rgb(234, 242, 248);">POINT 3</div>
+          <div style="position: absolute; right: 10px; bottom: 10px; color: rgb(255, 255, 255); font-size: 10px; letter-spacing: 0.02em; text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; pointer-events: none;">画像はイメージです</div>
+        </div>
+        <div style="padding: 24px 24px 30px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">食物繊維</div>
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">不足を補うための<br>食物繊維</div>
+          <div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);">日々の食事で不足しがちな食物繊維を、この一杯に添えて配合しました。</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; width: 100%;">
+      <button aria-label="前へ" class="carousel-btn" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(26, 112, 168); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.12) 0px 1px 4px; background-color: rgb(234, 242, 248); transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.23s, color 0.23s;" data-arrow="formula" data-dir="-1">‹</button>
+      <button aria-label="次へ" class="carousel-btn" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.2) 0px 1px 4px; transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.23s, color 0.23s;" data-arrow="formula" data-dir="1">›</button>
+    </div>
+  </section>
+
+
+
+  <section style="width: 100%; padding: 80px 24px; box-sizing: border-box; background: rgb(234, 242, 248); display: flex; flex-direction: column; align-items: center;">
+    
+    <h2 class="nw" style="font-size: 26px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: left; line-height: 1.55; margin: 0px 0px 32px; width: 100%; box-sizing: border-box; white-space: nowrap; padding-left: 18px; padding-right: 18px;">安心して<br>始められる理由があります。</h2>
+
+    <div style="width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; display: flex; gap: 14px; margin: 0px -24px 18px; padding: 0px 24px; box-sizing: border-box;" data-carousel="trust">
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(255, 255, 255); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="padding: 28px 24px 0px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">返金保証</div>
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">開封後でも、<br>90日間全額返金。</div>
+          <div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);">万が一ご満足いただけなかった場合は、全額返金します。</div>
+        </div>
+        <div style="flex: 1 1 0%; min-height: 36px;"></div>
+        <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; background: radial-gradient(90% 80% at 70% 20%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168));">
+          <picture><source srcset="img/pupless-trust-1.avif" type="image/avif"><img width="476" height="714" loading="lazy" decoding="async" id="pupless-trust-1" src="img/pupless-trust-1.jpg" alt="PUPLESSのパウチ" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          <button type="button" aria-label="返金保証の詳細を見る" data-modal-open style="position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(255, 255, 255); font-size: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: rgb(26, 112, 168);">＋</button>
+          
+        </div>
+      </div>
+
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(255, 255, 255); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="padding: 28px 24px 0px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">品質管理</div>
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">国内工場で、<br>一貫製造。</div>
+          <div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);">原料の受け入れから充填・包装まで、国内工場で一貫して管理しています。</div>
+        </div>
+        <div style="flex: 1 1 0%; min-height: 36px;"></div>
+        <div style="position: relative; width: 100%; aspect-ratio: 1 / 1; background: radial-gradient(90% 80% at 70% 20%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168));">
+          <picture><source srcset="img/pupless-trust-2.avif" type="image/avif"><img width="476" height="476" loading="lazy" decoding="async" id="pupless-trust-2" src="img/pupless-trust-2.jpg" alt="国内工場での製造イメージ" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          
+        </div>
+      </div>
+
+      <div style="flex: 0 0 80%; scroll-snap-align: center; background: rgb(255, 255, 255); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; box-shadow: rgba(26, 112, 168, 0.08) 0px 2px 12px;">
+        <div style="padding: 28px 24px 0px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: rgb(26, 112, 168);">管理栄養士のコメント</div>
+          <div style="font-size: 18px; font-weight: 900; color: rgb(17, 17, 17); line-height: 1.45;">プロテイン習慣と、 <br>消化への配慮。 </div>
+          <div style="font-size: 14px; line-height: 1.8; color: rgb(85, 85, 85);">たんぱく質は消化に時間がかかる栄養素。 だからこそ、続けるうえで消化への 配慮は大切だと考えています。</div>
+          <div style="font-size: 11px; line-height: 1.6; color: rgb(136, 136, 136); text-align: right;">管理栄養士<br>吉野 愛</div>
+        </div>
+        <div style="flex: 1 1 0%; min-height: 36px;"></div>
+        <div style="position: relative; width: 100%; aspect-ratio: 1 / 1;">
+          <picture><source srcset="img/pupless-trust-3.avif" type="image/avif"><img width="476" height="476" loading="lazy" decoding="async" id="pupless-trust-3" src="img/pupless-trust-3.jpg" alt="管理栄養士 吉野愛" style="background-color: rgb(255, 255, 255); position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+          <div style="position: absolute; right: 16px; bottom: 16px; font-size: 10px; line-height: 1.4; color: rgb(255, 255, 255); text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px;">※個人の見解です</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; width: 100%;">
+      <button aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(26, 112, 168); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.12) 0px 1px 4px; background-color: rgb(255, 255, 255); transition: background-color 0.23s, color 0.23s;" data-arrow="trust" data-dir="-1">‹</button>
+      <button aria-label="次へ" style="width: 40px; height: 40px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; color: rgb(255, 255, 255); font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: rgba(26, 112, 168, 0.2) 0px 1px 4px; background-color: rgb(26, 112, 168); transition: background-color 0.23s, color 0.23s;" data-arrow="trust" data-dir="1">›</button>
+    </div>
+  </section>
+
+  
+
+  <section style="width: 100%; padding: 80px 24px 48px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;">
+    <p style="font-size: 16px; font-weight: 700; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 36px;">あなたに合った始め方を。</p>
+
+    <div style="position: relative; width: 100%; box-sizing: border-box; background: rgb(255, 255, 255); border: 1.5px solid rgb(26, 112, 168); border-radius: 22px; padding: 34px 24px 28px; box-shadow: rgba(26, 112, 168, 0.1) 0px 8px 28px; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+      <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; border-radius: 999px; padding: 6px 16px; white-space: nowrap;">おすすめ</div>
+      <div style="width: 120px; height: 140px; overflow: hidden; margin-bottom: 18px; display: flex; align-items: center; justify-content: center;">
+        <picture><source srcset="img/pouch-plus-supplement.avif" type="image/avif"><img width="190" height="280" loading="lazy" decoding="async" src="img/pouch-plus-supplement.jpg" alt="PUPLESS パウチとサプリメント" style="width: 100%; height: 100%; object-fit: contain;"></picture>
+      </div>
+      <div style="font-size: 19px; font-weight: 900; color: rgb(17, 17, 17); margin-bottom: 4px;">定期購入</div>
+      <div style="font-size: 12px; color: rgb(119, 119, 119); margin-bottom: 20px;">30日分（90粒）／毎月お届け</div>
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: rgb(26, 112, 168); margin-bottom: 4px;">初回限定</div>
+      <div style="display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px;">
+        <div style="font-size: 46px; font-weight: 900; letter-spacing: -0.02em; color: rgb(26, 112, 168); line-height: 1;">¥2,480</div>
+        <div style="font-size: 14px; color: rgb(26, 112, 168); font-weight: 700;">税込</div>
+      </div>
+      <div style="font-size: 13px; color: rgb(153, 153, 153); margin-bottom: 6px;">通常価格（単品）<span style="text-decoration: line-through;">¥3,980</span></div>
+      <div style="font-size: 14px; color: rgb(51, 51, 51); margin-bottom: 22px;">2回目以降 ¥3,480（税込）／回</div>
+      <a href="#" class="cta-dark" data-cta="subscribe" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; height: 56px; padding: 0px 24px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-bottom: 22px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">定期購入</a>
+      <div style="display: flex; flex-direction: column; gap: 10px; align-self: flex-start; margin-bottom: 18px;">
+        <div style="display: flex; align-items: center; gap: 9px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size: 13px; color: rgb(61, 79, 92);">全国送料無料</span></div>
+        <div style="display: flex; align-items: center; gap: 9px;"></div>
+        <div style="display: flex; align-items: flex-start; gap: 9px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size: 13px; line-height: 1.7; color: rgb(61, 79, 92);">90日間全額返金保証（開封後も対象・返送送料当社負担）</span></div>
+        <div style="display: flex; align-items: center; gap: 9px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M3 8.5l3.5 3.5L13 5"></path></svg><span style="font-size: 13px; color: rgb(61, 79, 92);">回数縛りなし・いつでも解約OK</span></div>
+      </div>
+      <div style="font-size: 11px; line-height: 1.8; color: rgb(119, 119, 119); align-self: flex-start;">解約は次回発送予定日の10日前までに、お問い合わせから可能です。</div>
+    </div>
+
+    <div style="width: 100%; box-sizing: border-box; background: rgb(255, 255, 255); border-radius: 22px; padding: 28px 24px; box-shadow: rgba(26, 112, 168, 0.08) 0px 4px 16px; display: flex; flex-direction: column; align-items: center;">
+      
+      <div style="font-size: 16px; font-weight: 900; color: rgb(17, 17, 17); margin-bottom: 4px;">単品</div>
+      <div style="font-size: 12px; color: rgb(119, 119, 119); margin-bottom: 16px;">30日分（90粒）</div>
+      <div style="display: flex; align-items: baseline; gap: 6px; margin-bottom: 20px;">
+        <div style="font-size: 30px; font-weight: 900; letter-spacing: -0.02em; color: rgb(17, 17, 17); line-height: 1;">¥3,980</div>
+        <div style="font-size: 13px; color: rgb(17, 17, 17); font-weight: 700;">税込</div>
+      </div>
+      <a href="#" class="cta-outline" data-cta="single" role="button" style="background: transparent; color: rgb(17, 17, 17); border: 1.5px solid rgb(17, 17, 17); border-radius: 999px; height: 52px; padding: 0px 24px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 14px; width: 100%; cursor: pointer; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">単品購入</a>
+    </div>
+  </section>
+
+  
+
+  <section style="width: 100%; padding: 24px 24px 48px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;" data-rv-t="close">
+    <h2 style="font-size: 29px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: center; line-height: 1.55; margin: 0px 0px 32px;"><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1), transform 1.85s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="close">明日の一杯から、</span><span style="display: block; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s, transform 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="close">変えてみませんか。</span></h2>
+    <div style="font-size: 15px; line-height: 1.9; color: rgb(85, 85, 85); text-align: center; margin: -16px 0px 36px; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.76s, transform 1.85s cubic-bezier(0.22, 1, 0.36, 1) 0.76s; opacity: 1; transform: translateY(0px);" data-rv="y" data-rv-g="close"><p data-pm-slice="1 1 []">プロテインの前に3粒。<br>それだけで、いつもの習慣がもっと続けやすく。</p></div>
+    <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; margin-bottom: 36px; background: radial-gradient(100% 80% at 20% 15%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168)); transform-origin: 50% 60%; transition: opacity 2.3s cubic-bezier(0.22, 1, 0.36, 1) 1.05s, transform 2.3s cubic-bezier(0.22, 1, 0.36, 1) 1.05s; opacity: 1; transform: translateY(0px) scale(1);" data-rv="s" data-rv-g="close">
+      <picture><source srcset="img/pupless-closing-photo.avif" type="image/avif"><img width="690" height="862" loading="lazy" decoding="async" id="pupless-closing-photo" src="img/pupless-closing-photo.jpg" alt="PUPLESSのパウチとシェイカー" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
+    </div>
+    <a href="#" class="cta-dark cta-close" data-rv="o" data-rv-g="close" data-cta="closing" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; height: 56px; padding: 0px 24px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-bottom: 24px; box-sizing: border-box; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 1.7s, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
+
+  </section><section style="width: 100%; padding: 24px 24px 80px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;">
+
+
+    <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: center; line-height: 1.55; margin: 0px 0px 32px;">ご利用いただいた方の声</h2>
+
+    <div style="width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; display: flex; gap: 14px; margin: 0px -24px 18px; padding: 0px 24px; box-sizing: border-box;" data-carousel="reviews">
+      <div style="flex: 0 0 280px; scroll-snap-align: center; background: rgb(234, 242, 248); border-radius: 20px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; min-height: 220px; box-sizing: border-box;">
+        <div style="color: rgb(26, 112, 168); font-size: 15px; letter-spacing: 0.18em;">★★★★★</div>
+        <div style="font-size: 14px; line-height: 1.9; color: rgb(51, 51, 51); flex: 1 1 0%;">プロテインでお腹が張るのが気になっていました。これから続けていきたいです。</div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">Y</div>
+          <div style="font-size: 13px; color: rgb(119, 119, 119);">@yuta.takaha</div>
+        </div>
+      </div>
+      <div style="flex: 0 0 280px; scroll-snap-align: center; background: rgb(234, 242, 248); border-radius: 20px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; min-height: 220px; box-sizing: border-box;">
+        <div style="color: rgb(26, 112, 168); font-size: 15px; letter-spacing: 0.18em;">★★★★★</div>
+        <div style="font-size: 14px; line-height: 1.9; color: rgb(51, 51, 51); flex: 1 1 0%;">普段のプロテインにプラスする感覚で使っています。</div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">A</div>
+          <div style="font-size: 13px; color: rgb(119, 119, 119);">@aka.tkc</div>
+        </div>
+      </div>
+      <div style="flex: 0 0 280px; scroll-snap-align: center; background: rgb(234, 242, 248); border-radius: 20px; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; min-height: 220px; box-sizing: border-box;">
+        <div style="color: rgb(26, 112, 168); font-size: 15px; letter-spacing: 0.18em;">★★★★★</div>
+        <div style="font-size: 14px; line-height: 1.9; color: rgb(51, 51, 51); flex: 1 1 0%;">1日あたりにすると約80円なので試してみました。今はプロテインと一緒に続けています。</div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: rgb(26, 112, 168); color: rgb(255, 255, 255); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center;">E</div>
+          <div style="font-size: 13px; color: rgb(119, 119, 119);">@eko10008</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; height: 7px;">
+      
+        <div data-dot style="width: 7px; height: 7px; border-radius: 50%; background: rgb(26, 112, 168); transition: background 0.25s;"></div>
+      
+        <div data-dot style="width: 7px; height: 7px; border-radius: 50%; background: rgb(201, 219, 232); transition: background 0.25s;"></div>
+      
+        <div data-dot style="width: 7px; height: 7px; border-radius: 50%; background: rgb(201, 219, 232); transition: background 0.25s;"></div>
+      
+    </div>
+    <div style="font-size: 11px; color: rgb(153, 153, 153); line-height: 1.7; text-align: center;">※モニター様のご感想です。個人の感想であり、効果を保証するものではありません。</div>
+  </section>
+
+  <section id="faq" style="width: 100%; padding: 56px 24px 64px; box-sizing: border-box; display: flex; flex-direction: column; background-color: rgb(246, 244, 243);">
+    <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.01em; color: rgb(17, 17, 17); text-align: center; line-height: 1.55; margin: 0px 0px 24px;">よくある質問</h2>
+    <div style="display: flex; flex-direction: column;">
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">いつ飲めばいいですか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">いつものプロテインを飲む前に、3粒を目安にお召し上がりください。タイミングを決めておくと習慣にしやすくなります。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">1日にどのくらい飲めばいいですか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">1日3粒を目安にしています。まずは3ヶ月お試しいただくことをお勧めしています。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">いつものプロテインと一緒に飲んでも大丈夫ですか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">はい。PUPLESSは、普段のプロテイン習慣に加えていただくことを考えて設計したサプリメントです。プロテインの種類を問わず、いつもの習慣にプラスしてご利用いただけます。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">市販の整腸剤とは何が違うのですか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">PUPLESSは、プロテイン習慣を続けたい方に向けて成分を選び、設計したサプリメントです。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">副作用やリスクはありますか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">PUPLESSは食品（サプリメント）です。体質に合わない場合や、持病のある方・お薬を服用中の方は、お召し上がりの前に医師にご相談ください。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">返金保証はありますか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">開封後でも、90日間の全額返金保証をご用意しています。万が一ご満足いただけなかった場合は、カスタマーサポートまでご連絡ください。詳しい適用条件は<a href="./tokushoho.html" style="color: rgb(26, 112, 168); text-decoration: underline;">「特定商取引法に基づく表示」</a>をご確認ください。</div>
+      </details>
+      <details style="border-bottom: 1px solid rgb(221, 219, 213);">
+        <summary style="list-style: none; display: flex; align-items: center; gap: 14px; padding: 20px 0px; cursor: pointer; font-size: 14px; font-weight: 500; color: rgb(17, 17, 17); line-height: 1.7;"><span style="flex: 1 1 0%;">定期コースはいつでも解約できますか？</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex: 0 0 auto;"><path d="M2 5l5 5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></summary>
+        <div style="padding: 0px 0px 20px; font-size: 13px; line-height: 1.9; color: rgb(85, 85, 85);">回数の縛りはありません。次回お届け予定日の10日前までにマイページからお手続きいただけます。</div>
+      </details>
+    </div>
+  </section>
+
+  <footer style="width: 100%; padding: 40px 24px 32px; box-sizing: border-box; background: rgb(255, 255, 255); border-top: 1px solid rgb(230, 230, 230); display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <div style="font-weight: 800; font-size: 16px; letter-spacing: 0.15em; color: rgb(24, 59, 103);">PUPLESS</div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px;">
+      <a href="#faq" style="font-size: 12px; color: rgb(85, 85, 85); text-decoration: none;">よくある質問</a>
+      <a href="./tokushoho.html" style="font-size: 12px; color: rgb(85, 85, 85); text-decoration: none;">特定商取引法に基づく表示</a>
+      <a href="./privacy-policy.html" style="font-size: 12px; color: rgb(85, 85, 85); text-decoration: none;">プライバシーポリシー</a>
+    </div>
+    <div style="font-size: 11px; color: rgb(153, 153, 153);">© 2026 PUPLESS</div>
+  </footer>
+
+  </div>
+
+<div id="refund-modal" hidden data-modal-close style="position:fixed;inset:0;background:rgba(40,40,40,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box">
+      <div data-modal-panel style="width:100%;max-width:353px;background:#fff;border-radius:24px;padding:36px 26px 28px;box-sizing:border-box;max-height:86vh;overflow-y:auto;position:relative;display:flex;flex-direction:column;align-items:center">
+        <button data-modal-close type="button" aria-label="閉じる" style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:#999;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">✕</button>
+
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="#1A70A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-bottom:18px">
+          <path d="M26 5l16.5 5.5v13C42.5 34.5 35.5 42 26 46.5 16.5 42 9.5 34.5 9.5 23.5v-13L26 5z"></path>
+          <path d="M18.5 25.5l5.5 5.5 10-11"></path>
+        </svg>
+
+        <h3 style="font-size:20px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.5;margin:0 0 14px">90日間の全額返金保証について</h3>
+        <p style="font-size:12.5px;line-height:1.8;color:#777;text-align:center;margin:0">開封後・使い切った後でも、<br>ご満足いただけなければ商品代金を全額返金します。</p>
+
+        <div style="width:100%;display:flex;flex-direction:column">
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">対象：</strong>単品購入・定期購入のどちらも対象です</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">期間：</strong>商品お受け取りから90日以内のお申し出</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">返金額：</strong>商品代金の全額（送料無料のため、実質お支払い全額）</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px dashed #E3E3E3">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">返送料：</strong>当方が負担します</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:16px 0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A70A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="10" cy="10" r="8.5"></circle><path d="M5.8 10.3l2.8 2.8 5.6-6"></path></svg>
+            <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#111">定期購入の場合：</strong>直近3ヶ月分のお届けを上限に返金します</div>
+          </div>
+        </div>
+
+        <div style="width:100%;background:#F2F7FB;border-radius:16px;padding:18px 18px;box-sizing:border-box;margin-top:8px;display:flex;gap:12px;align-items:flex-start">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#1A70A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="1.5" y="4" width="15" height="10" rx="2"></rect><path d="M2 4.8l7 5.5 7-5.5"></path></svg>
+          <div style="font-size:12.5px;line-height:1.8;color:#333"><strong style="color:#1A70A8">申請方法：</strong>メール（<a href="mailto:info@mrlongman.com" style="color:#1A70A8;font-weight:700;word-break:break-all">info@mrlongman.com</a>）にてご連絡ください。折り返し手順をご案内します。</div>
+        </div>
+
+        <div style="font-size:11px;line-height:1.7;color:#999;text-align:center;margin-top:16px">※詳しい適用条件は<a href="./tokushoho.html" style="color:#999;text-decoration:underline">「特定商取引法に基づく表示」</a>をご確認ください。</div>
+      </div>
+    </div>
+
+<script>
+(function(){
+  var $ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var mq = function(q){ return window.matchMedia && window.matchMedia(q).matches; };
+
+  /* ---- reveal (元実装の IntersectionObserver / threshold 0.25 を踏襲) ---- */
+  var revealAll = function(){ $('[data-rv]').forEach(function(el){ el.classList.add('is-in'); }); };
+  if (mq('(prefers-reduced-motion: reduce)') || mq('print') || document.hidden
+      || typeof IntersectionObserver === 'undefined') {
+    revealAll();
+  } else {
+    window.addEventListener('beforeprint', revealAll);
+    setTimeout(function(){ if (document.hidden) revealAll(); }, 1200);
+    $('[data-rv-t]').forEach(function(t){
+      var g = t.getAttribute('data-rv-t');
+      var io = new IntersectionObserver(function(es){
+        if (es[0].isIntersecting){
+          $('[data-rv-g="' + g + '"]').forEach(function(el){ el.classList.add('is-in'); });
+          io.disconnect();
+        }
+      }, { threshold: 0.25 });
+      io.observe(t);
+    });
+  }
+
+  /* ---- カルーセル矢印 ---- */
+  var scrollerFor = function(name){ return document.querySelector('[data-carousel="' + name + '"]'); };
+  $('[data-arrow]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = scrollerFor(btn.getAttribute('data-arrow'));
+      if (!el) return;
+      var dir = parseInt(btn.getAttribute('data-dir'), 10);
+      var first = el.firstElementChild;
+      /* 元実装は daily がカード幅+gap の実寸、他は clientWidth*0.8+14。
+         子要素の実寸から求めるので幅が可変になっても破綻しない。 */
+      var step = first ? (first.getBoundingClientRect().width + 14) : (el.clientWidth * 0.8 + 14);
+      el.scrollBy({ left: dir * step, behavior: 'smooth' });
+    });
+  });
+
+  /* ---- 矢印の配色 / レビューのドット (元: handleScroll の active 判定) ---- */
+  var ARROW_REST = { daily: '#EAF2F8', formula: '#EAF2F8', trust: '#fff' };
+  var syncArrows = function(name, idx, n){
+    var last = idx === n - 1;
+    $('[data-arrow="' + name + '"]').forEach(function(b){
+      var isPrev = b.getAttribute('data-dir') === '-1';
+      var on = isPrev ? last : !last;
+      b.style.backgroundColor = on ? '#1A70A8' : ARROW_REST[name];
+      b.style.color = on ? '#fff' : '#1A70A8';
+    });
+  };
+  var activeIndex = function(el, n){
+    var max = el.scrollWidth - el.clientWidth;
+    return max > 0 ? Math.round((el.scrollLeft / max) * (n - 1)) : 0;
+  };
+  ['daily','formula','trust'].forEach(function(name){
+    var el = scrollerFor(name); if (!el) return;
+    var n = el.children.length;
+    el.addEventListener('scroll', function(){ syncArrows(name, activeIndex(el, n), n); }, { passive: true });
+  });
+  var rev = scrollerFor('reviews');
+  if (rev){
+    var dots = $('[data-dot]'), n = rev.children.length;
+    rev.addEventListener('scroll', function(){
+      var a = activeIndex(rev, n);
+      dots.forEach(function(d, i){ d.style.background = i === a ? '#1A70A8' : '#c9dbe8'; });
+    }, { passive: true });
+  }
+
+
+  /* ---- CTA: 遷移先と計測 --------------------------------------------
+     TODO: カートURLが決まったら CTA_URLS を埋めるだけで全CTAが有効になる。
+     計測は Google 広告タグ(gtag)が読み込まれていれば自動で送信する。 */
+  var CTA_URLS = {
+    hero:     '',   /* 例: 'https://cart.example.com/subscribe' */
+    subscribe:'',
+    single:   '',
+    closing:  ''
+  };
+  $('[data-cta]').forEach(function(a){
+    var key = a.getAttribute('data-cta');
+    var url = CTA_URLS[key];
+    if (url) a.setAttribute('href', url);
+    a.addEventListener('click', function(e){
+      if (typeof gtag === 'function') {
+        gtag('event', 'cta_click', { cta: key });
+        /* TODO: コンバージョン計測を使う場合はここで
+           gtag('event','conversion',{send_to:'AW-XXXXXXXXX/XXXXXXXX'}); */
+      }
+      if (!CTA_URLS[key]) {      /* 遷移先未設定のうちは先頭へ飛ばさない */
+        e.preventDefault();
+        console.warn('[PUPLESS] CTA "' + key + '" の遷移先が未設定です');
+      }
+    });
+  });
+
+  /* ---- 返金保証モーダル ---- */
+  var modal = document.getElementById('refund-modal');
+  if (modal){
+    var open  = function(){ modal.hidden = false; document.body.style.overflow = 'hidden';
+                            var b = modal.querySelector('[data-modal-close]'); if (b) b.focus(); };
+    var close = function(){ modal.hidden = true;  document.body.style.overflow = ''; };
+    $('[data-modal-open]').forEach(function(b){ b.addEventListener('click', open); });
+    modal.addEventListener('click', function(e){
+      if (e.target.closest('[data-modal-close]') || !e.target.closest('[data-modal-panel]')) close();
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+  }
+})();
+</script>
+</body>
+</html>
