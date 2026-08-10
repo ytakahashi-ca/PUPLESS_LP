@@ -127,8 +127,8 @@
           </sc-for>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:10px">
-          <button onClick="{{ onDailyPrev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8; transition: transform 0.23s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">‹</button>
-          <button onClick="{{ onDailyNext }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.23s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">›</button>
+          <button onClick="{{ onDailyPrev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: {{ dailyPrevColor }}; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: {{ dailyPrevBg }}; transition: transform 0.23s cubic-bezier(0.22,1,0.36,1), background-color 0.23s ease, color 0.23s ease" style-active="transform:scale(0.88)">‹</button>
+          <button onClick="{{ onDailyNext }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:{{ dailyNextBg }};color:{{ dailyNextColor }};font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.23s cubic-bezier(0.22,1,0.36,1), background-color 0.23s ease, color 0.23s ease" style-active="transform:scale(0.88)">›</button>
         </div>
       </div>
       <div style="height:32px"></div>
@@ -158,11 +158,12 @@
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
           <image-slot id="pupless-formula-1" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f1Scale }})" shape="rect" fit="cover" src="./assets/digezime.png" placeholder="DigeZyme®原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 1</div>
+          <div style="position:absolute;right:10px;bottom:10px;color:#fff;font-size:10px;letter-spacing:0.02em;text-shadow:0 1px 3px rgba(0,0,0,0.5);pointer-events:none">画像はイメージです</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
           <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #1A70A8">DIGEZYME®</div>
-          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">プロテインの<br>消化をサポート</div>
-          <div style="font-size:14px;line-height:1.8;color:#555">プロテインの消化を考えて選んだ、複合消化酵素です。</div>
+          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">プロテインのための<br>発酵酵素原料</div>
+          <div style="font-size:14px;line-height:1.8;color:#555">タンパク質にはたらく酵素をはじめ、5種の活性を持つDIGEZYME®を配合しました。</div>
         </div>
       </div>
 
@@ -170,11 +171,12 @@
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
           <image-slot id="pupless-formula-2" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f2Scale }})" shape="rect" fit="cover" src="./assets/micro.png" placeholder="nEF®原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 2</div>
+          <div style="position:absolute;right:10px;bottom:10px;color:#fff;font-size:10px;letter-spacing:0.02em;text-shadow:0 1px 3px rgba(0,0,0,0.5);pointer-events:none">画像はイメージです</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
           <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #1A70A8">nEF®</div>
           
-          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">特許取得の<br>ナノ型乳酸菌</div><div style="font-size:14px;line-height:1.8;color:#555"><span style="color: #555555; font-size: 14px">特許取得技術による乳酸菌が、毎日のスッキリ習慣をサポートします</span></div>
+          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">毎日続けるための<br>ナノ型乳酸菌</div><div style="font-size:14px;line-height:1.8;color:#555"><span style="color: #555555; font-size: 14px">特許製法（第4540376号）のナノ型乳酸菌を、プロテイン習慣のために配合しました。</span></div>
         </div>
       </div>
 
@@ -182,17 +184,18 @@
         <div style="position:relative;width:100%;aspect-ratio:3/4;flex-shrink:0;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
           <image-slot id="pupless-formula-3" style="transition:transform 1.23s cubic-bezier(0.22,1,0.36,1);transform:scale({{ f3Scale }})" shape="rect" fit="cover" src="./assets/carbo.png" placeholder="食物繊維原料写真をドロップ"></image-slot>
           <div style="position: absolute; top: 16px; left: 16px; color: #1A70A8; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; border-radius: 999px; padding: 7px 14px; pointer-events: none; background-color: #EAF2F8">POINT 3</div>
+          <div style="position:absolute;right:10px;bottom:10px;color:#fff;font-size:10px;letter-spacing:0.02em;text-shadow:0 1px 3px rgba(0,0,0,0.5);pointer-events:none">画像はイメージです</div>
         </div>
         <div style="padding:24px 24px 30px;display:flex;flex-direction:column;gap:10px;box-sizing:border-box">
           <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #1A70A8">食物繊維</div>
-          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">食物繊維で<br>スッキリを後押し</div>
-          <div style="font-size:14px;line-height:1.8;color:#555">善玉菌の栄養となる食物繊維が腸内環境のバランスをサポートします。</div>
+          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">不足を補うための<br>食物繊維</div>
+          <div style="font-size:14px;line-height:1.8;color:#555">日々の食事で不足しがちな食物繊維を、この一杯に添えて配合しました。</div>
         </div>
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:10px;width:100%">
-      <button onClick="{{ onCard3Prev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #1A70A8; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: #EAF2F8; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">‹</button>
-      <button onClick="{{ onCard3Next }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:#1A70A8;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.18s cubic-bezier(0.22,1,0.36,1)" style-active="transform:scale(0.88)">›</button>
+      <button onClick="{{ onCard3Prev }}" aria-label="前へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: {{ card3PrevColor }}; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.12); background-color: {{ card3PrevBg }}; transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), background-color 0.23s ease, color 0.23s ease" style-active="transform:scale(0.88)">‹</button>
+      <button onClick="{{ onCard3Next }}" aria-label="次へ" style="width:40px;height:40px;border-radius:50%;border:none;background:{{ card3NextBg }};color:{{ card3NextColor }};font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.2);transition:transform 0.18s cubic-bezier(0.22,1,0.36,1), background-color 0.23s ease, color 0.23s ease" style-active="transform:scale(0.88)">›</button>
     </div>
   </section>
 
@@ -202,12 +205,12 @@
     
     <h2 style="font-size:26px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:left;line-height:1.55;margin:0 0 32px;width:100%;box-sizing:border-box;white-space:nowrap;padding-left:18px;padding-right:18px">安心して<br>始められる理由があります。</h2>
 
-    <div style="width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;display:flex;gap:14px;margin:0 -24px 18px;padding:0 24px;box-sizing:border-box" ref="{{ trustRef }}">
+    <div style="width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;display:flex;gap:14px;margin:0 -24px 18px;padding:0 24px;box-sizing:border-box" onScroll="{{ onTrustScroll }}" ref="{{ trustRef }}">
       <div style="flex:0 0 80%;scroll-snap-align:center;background:#fff;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 2px 12px rgba(26,112,168,0.08)">
         <div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:10px">
           <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:#1A70A8">返金保証</div>
           <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">開封後でも、<br>30日間全額返金。</div>
-          <div style="font-size:14px;line-height:1.8;color:#555">万が一合わなくても、使い切った後でも返金します。</div>
+          <div style="font-size:14px;line-height:1.8;color:#555">万が一ご満足いただけなかった場合は、全額返金します。</div>
         </div>
         <div style="flex:1;min-height:36px"></div>
         <div style="position:relative;width:100%;aspect-ratio:1/1;background:radial-gradient(90% 80% at 70% 20%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8)">
@@ -232,27 +235,28 @@
 
       <div style="flex:0 0 80%;scroll-snap-align:center;background:#fff;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-sizing:border-box;box-shadow:0 2px 12px rgba(26,112,168,0.08)">
         <div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:10px">
-          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:#1A70A8">専門家の声</div>
-          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">管理栄養士の<br>コメント。</div>
-          <div style="font-size:14px;line-height:1.8;color:#555">プロテイン習慣と消化への配慮について、管理栄養士のコメントを掲載しています。</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.06em;color:#1A70A8">管理栄養士のコメント</div>
+          <div style="font-size: 18px; font-weight: 900; color: #111; line-height: 1.45">プロテイン習慣と、 <br>消化への配慮。 </div>
+          <div style="font-size:14px;line-height:1.8;color:#555">たんぱく質は消化に時間がかかる栄養素。 だからこそ、続けるうえで消化への 配慮は大切だと考えています。</div>
+          <div style="font-size:11px;line-height:1.6;color:#888;text-align:right">管理栄養士<br>吉野 愛</div>
         </div>
         <div style="flex:1;min-height:36px"></div>
         <div style="position: relative; width: 100%; aspect-ratio: 1/1">
-          <image-slot id="pupless-trust-3" shape="rect" fit="cover" src="./assets/pupless-trust-3.jpg" placeholder="管理栄養士の顔写真をドロップ" style="background-color: #FFFFFF"></image-slot>
-          <a href="#" aria-label="管理栄養士のコメントを見る" style="position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; text-decoration: none; background-color: #1A70A8">＋</a>
+          <image-slot id="pupless-trust-3" shape="rect" fit="cover" src="./assets/pupless-trust-3.png" placeholder="管理栄養士の顔写真をドロップ" style="background-color: #FFFFFF"></image-slot>
+          <div style="position:absolute;right:16px;bottom:16px;font-size:10px;line-height:1.4;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.5)">※個人の見解です</div>
         </div>
       </div>
     </div>
 
     <div style="display:flex;justify-content:flex-end;gap:10px;width:100%">
-      <button onClick="{{ onTrustPrev }}" aria-label="前へ" style="width:40px;height:40px;border-radius:50%;border:none;color:#1A70A8;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.12);background-color:#fff">‹</button>
-      <button onClick="{{ onTrustNext }}" aria-label="次へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.2); background-color: #1A70A8">›</button>
+      <button onClick="{{ onTrustPrev }}" aria-label="前へ" style="width:40px;height:40px;border-radius:50%;border:none;color:{{ trustPrevColor }};font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(26,112,168,0.12);background-color:{{ trustPrevBg }};transition:background-color 0.23s ease, color 0.23s ease">‹</button>
+      <button onClick="{{ onTrustNext }}" aria-label="次へ" style="width: 40px; height: 40px; border-radius: 50%; border: none; color: {{ trustNextColor }}; font-size: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 4px rgba(26,112,168,0.2); background-color: {{ trustNextBg }}; transition: background-color 0.23s ease, color 0.23s ease">›</button>
     </div>
   </section>
 
   
 
-  <section data-screen-label="④b 購入プラン" style="width:100%;padding:80px 24px;box-sizing:border-box;background:#fff;display:flex;flex-direction:column;align-items:center">
+  <section data-screen-label="④b 購入プラン" style="width:100%;padding:80px 24px 48px;box-sizing:border-box;background:#fff;display:flex;flex-direction:column;align-items:center">
     <p style="font-size:16px;font-weight:700;color:#111;text-align:center;margin:0 0 36px">あなたに合った始め方を。</p>
 
     <div style="position:relative;width:100%;box-sizing:border-box;background:#fff;border:1.5px solid #1A70A8;border-radius:22px;padding:34px 24px 28px;box-shadow:0 8px 28px rgba(26,112,168,0.10);display:flex;flex-direction:column;align-items:center;margin-bottom:20px">
@@ -293,7 +297,7 @@
 
   
 
-  <section data-screen-label="⑥ クロージング" ref="{{ closeSecRef }}" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
+  <section data-screen-label="⑥ クロージング" ref="{{ closeSecRef }}" style="width: 100%; padding: 24px 24px 48px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
     <h2 style="font-size:29px;font-weight:900;letter-spacing:-0.01em;color:#111;text-align:center;line-height:1.55;margin:0 0 32px"><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0s;opacity:{{ closeO }};transform:translateY({{ closeY }})">明日の一杯から、</span><span style="display:block;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.38s;opacity:{{ closeO }};transform:translateY({{ closeY }})">変えてみませんか。</span></h2>
     <div style="font-size:15px;line-height:1.9;color:#555;text-align:center;margin:-16px 0 36px;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 0.76s,transform 1.85s cubic-bezier(0.22,1,0.36,1) 0.76s;opacity:{{ closeO }};transform:translateY({{ closeY }})"><p data-pm-slice="1 1 []">プロテインの前に3粒。<br>それだけで、いつもの習慣がもっと続けやすく。</p></div>
     <div style="width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;margin-bottom:36px;background:radial-gradient(100% 80% at 20% 15%,#EAF2F8 0%,transparent 55%),linear-gradient(160deg,#7FA8C9,#1A70A8);transform-origin:50% 60%;transition:opacity 2.3s cubic-bezier(0.22,1,0.36,1) 1.05s,transform 2.3s cubic-bezier(0.22,1,0.36,1) 1.05s;opacity:{{ closeO }};transform:{{ closeImgT }}">
@@ -301,7 +305,7 @@
     </div>
     <button style="background:#111;color:#fff;border:none;border-radius:999px;height:56px;padding:0 24px;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:15px;width:100%;cursor:pointer;margin-bottom:24px;box-sizing:border-box;transition:opacity 1.85s cubic-bezier(0.22,1,0.36,1) 1.7s,transform 0.18s cubic-bezier(0.22,1,0.36,1);opacity:{{ closeO }}" style-hover="background:#000" style-active="transform:scale(0.97)">PUPLESSを試してみる</button>
 
-  </section><section data-screen-label="⑤ ご利用者の声" style="width: 100%; padding: 80px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
+  </section><section data-screen-label="⑤ ご利用者の声" style="width: 100%; padding: 24px 24px 80px; box-sizing: border-box; background: #fff; display: flex; flex-direction: column; align-items: center">
 
 
     <h2 style="font-size: 24px; font-weight: 900; letter-spacing: -0.01em; color: #111; text-align: center; line-height: 1.55; margin: 0 0 32px">ご利用いただいた方の声</h2>
@@ -407,7 +411,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false, designIn: false, formulaIn: false, card3Pulse: false, closeIn: false };
+  state = { card3Active: 0, reviewActive: 0, dailyActive: 0, trustActive: 0, barsGrown: false, statsIn: false, dailyIn: false, dailyPulse: false, designIn: false, formulaIn: false, card3Pulse: false, closeIn: false };
 
   handleScroll(e, key, n) {
     const el = e.currentTarget;
@@ -500,6 +504,16 @@ class Component extends DCLogic {
     const act = this.state.dailyActive;
     const fp = this.state.card3Pulse;
     const fa = this.state.card3Active;
+    const ta = this.state.trustActive;
+    const arrowColors = (isLast, restBg) => ({
+      prevBg: isLast ? '#1A70A8' : restBg,
+      prevColor: isLast ? '#fff' : '#1A70A8',
+      nextBg: isLast ? restBg : '#1A70A8',
+      nextColor: isLast ? '#1A70A8' : '#fff',
+    });
+    const dailyArrows = arrowColors(act === 2, '#EAF2F8');
+    const card3Arrows = arrowColors(fa === 2, '#EAF2F8');
+    const trustArrows = arrowColors(ta === 2, '#fff');
     return {
       designSecRef: (el) => { this.refs = this.refs || {}; this.refs.designSecRef = el; },
       designO: this.state.designIn ? 1 : 0,
@@ -528,12 +542,25 @@ class Component extends DCLogic {
       onDailyScroll: (e) => this.handleScroll(e, 'dailyActive', 3),
       onDailyPrev: () => this.scrollDaily(-1),
       onDailyNext: () => this.scrollDaily(1),
+      dailyPrevBg: dailyArrows.prevBg,
+      dailyPrevColor: dailyArrows.prevColor,
+      dailyNextBg: dailyArrows.nextBg,
+      dailyNextColor: dailyArrows.nextColor,
       dailyRef: (el) => { this.refs = this.refs || {}; this.refs.dailyRef = el; },
+      onTrustScroll: (e) => this.handleScroll(e, 'trustActive', 3),
       onTrustPrev: () => this.scrollTrust(-1),
       onTrustNext: () => this.scrollTrust(1),
+      trustPrevBg: trustArrows.prevBg,
+      trustPrevColor: trustArrows.prevColor,
+      trustNextBg: trustArrows.nextBg,
+      trustNextColor: trustArrows.nextColor,
       trustRef: (el) => { this.refs = this.refs || {}; this.refs.trustRef = el; },
       onCard3Prev: () => this.scrollCard3(-1),
       onCard3Next: () => this.scrollCard3(1),
+      card3PrevBg: card3Arrows.prevBg,
+      card3PrevColor: card3Arrows.prevColor,
+      card3NextBg: card3Arrows.nextBg,
+      card3NextColor: card3Arrows.nextColor,
       card3Ref: (el) => { this.refs = this.refs || {}; this.refs.card3Ref = el; },
       reviewDots: dots(6, this.state.reviewActive),
       onCard3Scroll: (e) => this.handleScroll(e, 'card3Active', 3),
