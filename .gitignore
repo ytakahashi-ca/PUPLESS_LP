@@ -19,3 +19,9 @@ yarn-error.log*
 # build
 /dist/
 /build/
+
+# 検証ツールの作業ファイル（gate.py が実行のたびに生成）
+tools/baseline/_current.png
+_tool_probe.html
+_tool_vp.html
+_verify_images.html
