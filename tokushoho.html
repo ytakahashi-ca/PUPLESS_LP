@@ -21,6 +21,9 @@
 html,body{height:100%;margin:0}
 /* Phase 2: ルートを可変幅に（max-width は従来の393pxを維持） */
 body { margin: 0; background: #ececec; }
+    /* index.html と同様、フォントの土台は body に置く（ルート div の外に
+       要素が出ても既定フォントに落ちないように） */
+    body { font-family: "Noto Sans JP", sans-serif; }
     a { color: #1A70A8; }
     a:hover { color: #183B67; }
 </style>
@@ -30,7 +33,7 @@ body { margin: 0; background: #ececec; }
 <div style="width: 100%; max-width: 393px; margin: 0px auto; font-family: &quot;Noto Sans JP&quot;, sans-serif; background: rgb(255, 255, 255);">
 
   <header style="width: 100%; height: 56px; background: rgb(250, 251, 252); border-bottom: 1px solid rgb(230, 230, 230); display: flex; align-items: center; padding: 0px 20px; box-sizing: border-box;">
-    <a href="./index.html" style="font-weight: 800; font-size: 20px; letter-spacing: 0.12em; color: rgb(24, 59, 103); text-decoration: none;">PUPLESS</a>
+    <a href="./index.html" style="font-weight: 700; font-size: 20px; letter-spacing: 0.12em; color: rgb(24, 59, 103); text-decoration: none;">PUPLESS</a>
   </header>
 
   <main style="width: 100%; padding: 56px 24px 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
@@ -161,7 +164,7 @@ body { margin: 0; background: #ececec; }
   </main>
 
   <footer style="width: 100%; padding: 40px 24px 32px; box-sizing: border-box; background: rgb(255, 255, 255); border-top: 1px solid rgb(230, 230, 230); display: flex; flex-direction: column; align-items: center; gap: 20px;">
-    <div style="font-weight: 800; font-size: 16px; letter-spacing: 0.15em; color: rgb(24, 59, 103);">PUPLESS</div>
+    <div style="font-weight: 700; font-size: 16px; letter-spacing: 0.15em; color: rgb(24, 59, 103);">PUPLESS</div>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px;">
       <a href="./index.html#faq" style="font-size: 12px; color: rgb(85, 85, 85); text-decoration: none;">よくある質問</a>
       <a href="./tokushoho.html" style="font-size: 12px; color: rgb(85, 85, 85); text-decoration: none;">特定商取引法に基づく表示</a>
