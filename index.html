@@ -190,16 +190,9 @@ picture{display:contents}
 }
 </script>
 
-<!-- TODO: Google広告タグ。発行された測定IDに置き換えてコメントを外す。
-     async なので LCP をブロックしない。
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-XXXXXXXXX');
-</script>
--->
+<!-- 計測タグ。本番ドメインでのみ GA4 / Meta / Clarity を読み込む。
+     測定IDは assets/analytics.js 冒頭の IDS に入れる。 -->
+<script src="assets/analytics.js"></script>
 </head>
 <body>
 
@@ -748,7 +741,8 @@ picture{display:contents}
 
   /* ---- CTA: 遷移先と計測 --------------------------------------------
      TODO: カートURLが決まったら CTA_URLS を埋めるだけで全CTAが有効になる。
-     計測は Google 広告タグ(gtag)が読み込まれていれば自動で送信する。 */
+     計測は assets/analytics.js の pupless.track() 経由。本番ドメイン以外では
+     送信されず window.PUPLESS_EVENTS に積まれるだけ。 */
   var CTA_URLS = {
     hero:     '',   /* 例: 'https://cart.example.com/subscribe' */
     subscribe:'',
@@ -760,10 +754,10 @@ picture{display:contents}
     var url = CTA_URLS[key];
     if (url) a.setAttribute('href', url);
     a.addEventListener('click', function(e){
-      if (typeof gtag === 'function') {
-        gtag('event', 'cta_click', { cta: key });
-        /* TODO: コンバージョン計測を使う場合はここで
-           gtag('event','conversion',{send_to:'AW-XXXXXXXXX/XXXXXXXX'}); */
+      if (window.pupless) {
+        pupless.track('cta_click', { cta: key });
+        /* TODO: 広告のコンバージョン計測を使う場合はここで
+           pupless.conversion('AW-XXXXXXXXX/XXXXXXXX'); */
       }
       if (!CTA_URLS[key]) {      /* 遷移先未設定のうちは先頭へ飛ばさない */
         e.preventDefault();
