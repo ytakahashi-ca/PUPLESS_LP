@@ -669,6 +669,31 @@ picture{display:contents}
       </div>
     </div>
 
+<!-- ===== 販売準備中モーダル（定期購入 / 単品購入 CTA） ===== -->
+<style>@keyframes pl-restock-in{from{opacity:0}to{opacity:1}}@keyframes pl-restock-pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}#restock-modal[data-open] {animation:pl-restock-in .18s ease-out both}#restock-modal[data-open] [data-restock-panel]{animation:pl-restock-pop .22s cubic-bezier(.22,.61,.36,1) both}#restock-email:focus{outline:none;border-color:#1A70A8}#restock-submit:hover{background:#175f8f}#restock-modal[hidden],#restock-modal [hidden]{display:none!important}</style>
+<div id="restock-modal" hidden data-restock-close role="dialog" aria-modal="true" aria-labelledby="restock-title" style="position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;overflow-y:auto">
+  <div data-restock-panel style="width:100%;max-width:368px;background:#fff;border-radius:26px;padding:28px 22px 24px;box-sizing:border-box;position:relative;max-height:calc(100vh - 48px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 18px 50px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;text-align:center">
+    <button type="button" data-restock-close aria-label="閉じる" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border:none;background:transparent;color:#444;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+    <div style="width:120px;height:120px;border-radius:50%;background:#EDF4FA;display:flex;align-items:center;justify-content:center;margin:10px 0 18px"><picture><source srcset="img/pouch-plus-supplement.avif" type="image/avif"><img src="img/pouch-plus-supplement.jpg" width="190" height="280" loading="lazy" decoding="async" alt="PUPLESS パウチとサプリメント" style="width:104px;height:120px;object-fit:contain"></picture></div>
+    <h2 id="restock-title" style="margin:0 0 14px;font-family:'Noto Sans JP',sans-serif;font-size:25px;font-weight:900;letter-spacing:-.01em;color:#111;line-height:1.3">ただいま準備中です。</h2>
+    <p style="margin:0 0 12px;font-size:13.5px;line-height:1.9;color:#666">PUPLESSは現在、初回販売に向けて<br>準備を進めています。</p>
+    <p style="margin:0 0 20px;font-size:13.5px;line-height:1.9;color:#666">販売開始まで、今しばらくお待ちください。</p>
+    <div style="width:100%;height:1px;background:#E6E6E6;margin-bottom:20px"></div>
+    <form id="restock-form" novalidate style="width:100%;display:flex;flex-direction:column;align-items:center">
+      <div style="font-size:15px;font-weight:700;color:#1A70A8;margin-bottom:6px">入荷通知を受け取る方はこちら</div>
+      <div style="font-size:12.5px;color:#666;margin-bottom:14px">販売開始時にメールでお知らせします。</div>
+      <input id="restock-email" type="email" inputmode="email" autocomplete="email" required placeholder="メールアドレスを入力" style="width:100%;height:50px;box-sizing:border-box;padding:0 16px;border:1px solid #DEDEDE;border-radius:11px;background:#fff;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:#111;margin-bottom:12px">
+      <div id="restock-error" hidden style="width:100%;text-align:left;font-size:12.5px;color:#C0392B;margin:-6px 0 10px">メールアドレスの形式をご確認ください。</div>
+      <button id="restock-submit" type="submit" style="width:100%;height:54px;border:none;border-radius:11px;background:#1A70A8;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:15.5px;font-weight:700;cursor:pointer;transition:background .15s ease">入荷通知を受け取る</button>
+    </form>
+    <div id="restock-done" hidden style="width:100%;display:flex;flex-direction:column;align-items:center">
+      <div style="font-size:16px;font-weight:700;color:#1A70A8;margin-bottom:8px">✓ 登録しました</div>
+      <div style="font-size:14px;color:#666;line-height:1.8">販売開始時にメールでお知らせします。</div>
+    </div>
+    <p style="margin:16px 0 0;font-size:11.5px;line-height:1.8;color:#999">ご登録いただいたメールアドレスは、<br>PUPLESSの販売開始等のお知らせに使用します。</p>
+  </div>
+</div>
+
 <script>
 (function(){
   var $ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
@@ -761,7 +786,7 @@ picture{display:contents}
       }
       if (CTA_URLS[key]) return;
       /* 遷移先未設定。ページ内アンカー（#plans 等）ならそこへスムーススクロール、
-         それ以外（href="#"）は先頭へ飛ばさない。 */
+         購入CTA（定期購入 / 単品購入）は販売準備中モーダルを開く。 */
       var hash = a.getAttribute('href') || '';
       var target = hash.charAt(0) === '#' && hash.length > 1
                  ? document.getElementById(hash.slice(1)) : null;
@@ -771,6 +796,8 @@ picture{display:contents}
           behavior: mq('(prefers-reduced-motion: reduce)') ? 'auto' : 'smooth',
           block: 'start'
         });
+      } else if (key === 'subscribe' || key === 'single') {
+        openRestock(key);
       } else {
         console.warn('[PUPLESS] CTA "' + key + '" の遷移先が未設定です');
       }
@@ -788,6 +815,52 @@ picture{display:contents}
       if (e.target.closest('[data-modal-close]') || !e.target.closest('[data-modal-panel]')) close();
     });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+  }
+
+  /* ---- 販売準備中モーダル（定期購入 / 単品購入 CTA） ----
+     カート未開設のあいだ、購入CTAはこのモーダルで受け止めて入荷通知を集める。
+     CTA_URLS に遷移先が入った時点で openRestock は呼ばれなくなる。 */
+  var restock = document.getElementById('restock-modal');
+  var restockLast = null;
+
+  function openRestock(cta){
+    if (!restock) return;
+    restockLast = document.activeElement;
+    restock.hidden = false; restock.setAttribute('data-open', '');
+    document.body.style.overflow = 'hidden';
+    var c = restock.querySelector('[data-restock-close]'); if (c) c.focus();
+    if (window.pupless) pupless.track('restock_modal_open', { cta: cta || '' });
+  }
+  function closeRestock(){
+    restock.hidden = true; restock.removeAttribute('data-open');
+    document.body.style.overflow = '';
+    if (restockLast && restockLast.focus) restockLast.focus();
+  }
+
+  if (restock){
+    var rForm  = document.getElementById('restock-form'),
+        rDone  = document.getElementById('restock-done'),
+        rInput = document.getElementById('restock-email'),
+        rErr   = document.getElementById('restock-error');
+
+    restock.addEventListener('click', function(e){
+      if (e.target.closest('[data-restock-close]') || !e.target.closest('[data-restock-panel]')) closeRestock();
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !restock.hidden) closeRestock(); });
+
+    rForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var v = (rInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+        rErr.hidden = false; rInput.style.borderColor = '#C0392B'; rInput.focus(); return;
+      }
+      rErr.hidden = true; rInput.style.borderColor = '#DEDEDE';
+      if (window.pupless) pupless.track('restock_email_submit', {});
+      /* TODO: 実際のメール保存処理を接続する
+         例: fetch('/api/restock', { method:'POST', body: JSON.stringify({ email: v }) })
+         成功時に下の表示切り替えを実行する。 */
+      rForm.hidden = true; rDone.hidden = false;
+    });
   }
 })();
 </script>
