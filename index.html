@@ -218,7 +218,7 @@ picture{display:contents}
       毎日の一杯から、ちゃんと未来を変えていく。
     </p>
 
-    <a href="#" class="cta-dark" data-cta="hero" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; padding: 17px 26px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; margin-bottom: 24px; white-space: nowrap; pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
+    <a href="#plans" class="cta-dark" data-cta="hero" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; padding: 17px 26px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; margin-bottom: 24px; white-space: nowrap; pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
 
     <div style="text-align: center; color: rgb(51, 51, 51); font-size: 12px; line-height: 1.8;">定期初回 ¥2,480(税込)<br>1日あたり約80円<br><span style="color: rgb(102, 102, 102); font-size: 11px;">2回目以降 ¥3,480/月・回数縛りなし・いつでも解約可</span></div>
 
@@ -487,7 +487,7 @@ picture{display:contents}
 
   
 
-  <section style="width: 100%; padding: 80px 24px 48px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;">
+  <section id="plans" style="width: 100%; padding: 80px 24px 48px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center; scroll-margin-top: 20px;">
     <p style="font-size: 16px; font-weight: 700; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 36px;">あなたに合った始め方を。</p>
 
     <div style="position: relative; width: 100%; box-sizing: border-box; background: rgb(255, 255, 255); border: 1.5px solid rgb(26, 112, 168); border-radius: 22px; padding: 34px 24px 28px; box-shadow: rgba(26, 112, 168, 0.1) 0px 8px 28px; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
@@ -534,7 +534,7 @@ picture{display:contents}
     <div style="width: 100%; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; margin-bottom: 36px; background: radial-gradient(100% 80% at 20% 15%, rgb(234, 242, 248) 0%, transparent 55%), linear-gradient(160deg, rgb(127, 168, 201), rgb(26, 112, 168)); transform-origin: 50% 60%; transition: opacity 2.3s cubic-bezier(0.22, 1, 0.36, 1) 1.05s, transform 2.3s cubic-bezier(0.22, 1, 0.36, 1) 1.05s; opacity: 1; transform: translateY(0px) scale(1);" data-rv="s" data-rv-g="close">
       <picture><source srcset="img/pupless-closing-photo.avif" type="image/avif"><img width="690" height="862" loading="lazy" decoding="async" id="pupless-closing-photo" src="img/pupless-closing-photo.jpg" alt="PUPLESSのパウチとシェイカー" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></picture>
     </div>
-    <a href="#" class="cta-dark cta-close" data-rv="o" data-rv-g="close" data-cta="closing" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; height: 56px; padding: 0px 24px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-bottom: 24px; box-sizing: border-box; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 1.7s, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
+    <a href="#plans" class="cta-dark cta-close" data-rv="o" data-rv-g="close" data-cta="closing" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; height: 56px; padding: 0px 24px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; margin-bottom: 24px; box-sizing: border-box; transition: opacity 1.85s cubic-bezier(0.22, 1, 0.36, 1) 1.7s, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1); opacity: 1; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
 
   </section><section style="width: 100%; padding: 24px 24px 80px; box-sizing: border-box; background: rgb(255, 255, 255); display: flex; flex-direction: column; align-items: center;">
 
@@ -759,8 +759,19 @@ picture{display:contents}
         /* TODO: 広告のコンバージョン計測を使う場合はここで
            pupless.conversion('AW-XXXXXXXXX/XXXXXXXX'); */
       }
-      if (!CTA_URLS[key]) {      /* 遷移先未設定のうちは先頭へ飛ばさない */
-        e.preventDefault();
+      if (CTA_URLS[key]) return;
+      /* 遷移先未設定。ページ内アンカー（#plans 等）ならそこへスムーススクロール、
+         それ以外（href="#"）は先頭へ飛ばさない。 */
+      var hash = a.getAttribute('href') || '';
+      var target = hash.charAt(0) === '#' && hash.length > 1
+                 ? document.getElementById(hash.slice(1)) : null;
+      e.preventDefault();
+      if (target) {
+        target.scrollIntoView({
+          behavior: mq('(prefers-reduced-motion: reduce)') ? 'auto' : 'smooth',
+          block: 'start'
+        });
+      } else {
         console.warn('[PUPLESS] CTA "' + key + '" の遷移先が未設定です');
       }
     });
