@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+  OGP画像(img/pupless-ogp.jpg 1200x630)の版下。
+  生成コマンドは tools/README.md を見ること。
+
+  ▼ 注意：価格と文言は index.html と二重管理になっている。
+     ここの ¥2,480 は index.html のプライシング部と同じ値を手で写したもので、
+     連動していない。価格改定・キャッチコピー変更をしたら、
+     このファイルも直して画像を作り直すこと。忘れると
+     「LPは新価格・SNSカードは旧価格」という事故になる。
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1200px; height:630px; overflow:hidden; }
+  body{
+    font-family:'Noto Sans JP','Hiragino Sans','Hiragino Kaku Gothic ProN',sans-serif;
+    background:linear-gradient(115deg,#ffffff 0%,#ffffff 42%,#EDF4FA 100%);
+    position:relative;
+  }
+
+  /* 左上から薄く差す光。のっぺりを避けるための微細なグラデ */
+  .glow{
+    position:absolute; left:-160px; top:-220px; width:760px; height:760px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(26,112,168,.10) 0%,rgba(26,112,168,0) 68%);
+  }
+
+  .wrap{ position:relative; display:flex; height:100%; align-items:center; }
+
+  /* ---- 左：テキスト ---- */
+  .copy{ width:660px; padding:0 0 0 72px; }
+
+  .brand{
+    display:flex; align-items:center; gap:12px; margin-bottom:26px;
+  }
+  /* ブランドマーク。透過PNGなので背景を敷かずそのまま置く */
+  .brand .mark{ width:40px; height:40px; display:block; }
+  .brand .name{
+    font-size:19px; font-weight:900; letter-spacing:.16em; color:#1A70A8;
+    font-family:Helvetica,Arial,sans-serif;
+  }
+
+  .lead{
+    font-size:15px; font-weight:700; letter-spacing:.09em;
+    color:#1A70A8; margin-bottom:18px;
+  }
+
+  h1{
+    font-size:60px; font-weight:900; letter-spacing:-.02em;
+    line-height:1.32; color:#111;
+  }
+
+  .sub{
+    font-size:19px; font-weight:500; line-height:1.75; color:#555;
+    margin-top:20px;
+  }
+
+  .rule{ width:56px; height:3px; background:#1A70A8; margin:30px 0 24px; }
+
+  .offer{ display:flex; align-items:baseline; gap:14px; }
+  .offer .label{ font-size:15px; font-weight:700; color:#3D4F5C; }
+  .offer .price{
+    font-size:44px; font-weight:900; letter-spacing:-.02em; color:#1A70A8;
+    line-height:1;
+  }
+  .offer .tax{ font-size:14px; font-weight:500; color:#777; }
+
+  .badge{
+    display:inline-block; margin-top:18px; padding:9px 18px;
+    border:1.5px solid #1A70A8; border-radius:999px;
+    font-size:14px; font-weight:700; color:#1A70A8; letter-spacing:.02em;
+  }
+
+  /* ---- 右：商品写真 ---- */
+  /* 元画像が白背景のJPGなので multiply で白を背景に馴染ませる */
+  .shot{ flex:1; display:flex; align-items:center; justify-content:center; }
+  /* filter を当てると新しい合成コンテキストが作られて multiply が効かなくなる。
+     影は元写真が持っているので付けない。 */
+  .shot img{
+    height:560px; width:auto; display:block;
+    mix-blend-mode:multiply;
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <div class="copy">
+    <div class="brand">
+      <img class="mark" src="../img/pupless-mark.png" alt="">
+      <div class="name">PUPLESS</div>
+    </div>
+
+    <div class="lead">プロテイン習慣サポートサプリメント</div>
+
+    <h1>プロテインの前に、<br>3粒。</h1>
+
+    <div class="sub">プロテインは続けたい。お腹は気にしたくない。</div>
+
+    <div class="rule"></div>
+
+    <div class="offer">
+      <span class="label">定期初回</span>
+      <span class="price">¥2,480</span>
+      <span class="tax">（税込）</span>
+    </div>
+
+    <div class="badge">90日間 全額返金保証</div>
+  </div>
+
+  <div class="shot">
+    <img src="../img/pupless-pouch-cutout-trim.jpg" alt="">
+  </div>
+</div>
+</body>
+</html>

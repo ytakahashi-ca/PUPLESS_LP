@@ -62,6 +62,72 @@ git checkout -- tools/baseline/index-393.png   # 3. 終わったら戻す（任�
 | `_png.py` | PNG の読み書き（PIL 不要） |
 | `_chrome.py` | headless Chrome のラッパ |
 | `baseline/index-393.png` | 比較の基準スクショ |
+| `ogp.html` | OGP画像（`img/pupless-ogp.jpg`）の版下。検証ツールではなく生成用 |
+| `mark.html` | ファビコン／ブランドマークの版下。生成用 |
+
+## OGP画像の作り直し
+
+`img/pupless-ogp.jpg`（1200x630、SNSシェア時のカード画像）は `tools/ogp.html` を
+headless Chrome で撮って作っている。**価格改定・キャッチコピー変更・パウチ写真の
+差し替えをしたら、作り直すこと。**
+
+```bash
+CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CH" --headless=new --disable-gpu --hide-scrollbars \
+      --force-device-scale-factor=2 --window-size=1200,630 \
+      --virtual-time-budget=6000 \
+      --screenshot=/tmp/ogp@2x.png "file://$PWD/tools/ogp.html"
+sips -s format jpeg -s formatOptions 88 -z 630 1200 /tmp/ogp@2x.png \
+     --out img/pupless-ogp.jpg
+```
+
+- 2倍(2400x1260)で撮ってから 1200x630 に縮小している。文字のジャギーを消すため。
+- `--virtual-time-budget` は Google Fonts (Noto Sans JP) の読み込み待ち。短いと
+  フォントが当たる前に撮れてしまい、字面が変わる。
+- パウチ写真は白背景のJPGを `mix-blend-mode:multiply` で背景に馴染ませている。
+  `filter` を足すと合成コンテキストが分離してこれが効かなくなるので注意。
+- **`tools/ogp.html` の価格は index.html と二重管理**。連動していないので、
+  改定時は両方直す。詳細はファイル冒頭のコメントに書いた。
+- ブランドマーク（`img/pupless-mark.png`）を作り直したら、OGPも撮り直すこと。
+  OGPの左上にこのマークを置いている。
+
+## ファビコン／ブランドマークの作り直し
+
+元データは `uploads/pupless-mark-src.png`（背景透過・1536x1024、円は中央やや上）。
+`tools/mark.html` が、この円の部分だけを 512x512 に切り出す枠になっている。
+
+```bash
+CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+# 1. 透過版（ファビコン用のマスター）
+"$CH" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+      --default-background-color=00000000 --force-device-scale-factor=1 \
+      --window-size=512,512 --virtual-time-budget=6000 \
+      --screenshot=img/pupless-mark.png "file://$PWD/tools/mark.html"
+
+# 2. 白背景版（apple-touch-icon 用）
+"$CH" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+      --default-background-color=ffffffff --force-device-scale-factor=1 \
+      --window-size=512,512 --virtual-time-budget=6000 \
+      --screenshot=/tmp/mark-white.png "file://$PWD/tools/mark.html"
+
+# 3. 各サイズへ縮小
+sips -Z 192 img/pupless-mark.png --out img/favicon-192.png
+sips -Z 32  img/pupless-mark.png --out img/favicon-32.png
+sips -Z 180 /tmp/mark-white.png  --out img/apple-touch-icon.png
+```
+
+**共通フラグを変数にまとめて `$COMMON` と展開する書き方はしないこと。**
+このマシンのシェルは zsh で、zsh はクォートしない変数展開を単語分割しない。
+フラグ全体が1個の引数として渡り、`--window-size` が無視されて 512x512 にならない
+（実際に踏んだ。出力が 756x469 になり、気づかないと壊れたファビコンが commit される）。
+
+- **`apple-touch-icon.png` だけ白背景**にしている。iOS はホーム画面アイコンの透過部分を
+  黒で塗りつぶすため、透過のまま渡すと黒い角が出る。
+- `--allow-file-access-from-files` が無いと `file://` のページから画像を読めない。
+- 元画像内の円の位置（left=343 top=80 w=849 h=846）は Chrome の canvas で画素を
+  走査して実測した値。**元データを差し替えたら、この座標も測り直すこと**。
+  `mark.html` の CSS にべた書きしてある。
 
 ## ハマりどころ（実際に踏んだもの）
 

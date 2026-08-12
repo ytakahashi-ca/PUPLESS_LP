@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+  ファビコン／ブランドマークの版下。
+  uploads/pupless-mark-src.png（背景透過・1536x1024）から円の部分だけを
+  512x512 に切り出すためのもの。生成コマンドは tools/README.md を見ること。
+-->
+<meta charset="utf-8">
+<style>
+  /* 実測した円の位置: 元画像1536x1024 のうち left=343 top=80 w=849 h=846。
+     これが 512x512 の枠にぴったり収まるように拡大率と位置を決めている。
+     scale = 512/849 = 0.60306 */
+  *{ margin:0; padding:0; }
+  html,body{ width:512px; height:512px; overflow:hidden; background:transparent; }
+  .frame{ width:512px; height:512px; overflow:hidden; position:relative; }
+  .frame img{
+    position:absolute;
+    width:926.3px;            /* 1536 * 0.60306 */
+    height:617.5px;           /* 1024 * 0.60306 */
+    left:-206.85px;           /* -343 * 0.60306 */
+    top:-49.15px;             /* -80 * 0.60306 から、余り1.8pxの半分だけ更に上げる */
+    image-rendering:auto;
+  }
+</style>
+<div class="frame"><img src="../uploads/pupless-mark-src.png" alt=""></div>
