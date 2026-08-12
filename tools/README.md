@@ -64,6 +64,8 @@ git checkout -- tools/baseline/index-393.png   # 3. 終わったら戻す（任�
 | `baseline/index-393.png` | 比較の基準スクショ |
 | `ogp.html` | OGP画像（`img/pupless-ogp.jpg`）の版下。検証ツールではなく生成用 |
 | `mark.html` | ファビコン／ブランドマークの版下。生成用 |
+| `trust1.html` | `img/pupless-trust-1.jpg` の版下。生成用 |
+| `cutout.swift` | 写真から被写体だけを切り抜く（背景透過PNG化）。生成用 |
 
 ## OGP画像の作り直し
 
@@ -128,6 +130,64 @@ sips -Z 180 /tmp/mark-white.png  --out img/apple-touch-icon.png
 - 元画像内の円の位置（left=343 top=80 w=849 h=846）は Chrome の canvas で画素を
   走査して実測した値。**元データを差し替えたら、この座標も測り直すこと**。
   `mark.html` の CSS にべた書きしてある。
+
+## 返金保証タイルの画像（pupless-trust-1）
+
+置き場所の枠が `aspect-ratio: 1/1` の正方形で、`object-fit: cover` が掛かっている。
+**縦長の画像をそのまま入れると上下が切れてパッケージが見切れる**（実際にそうなった）。
+`tools/trust1.html` は、元データの被写体を余白付きで 800x800 の正方形に収める枠。
+生成方法は `mark.html` と同じ。
+
+現在の元データは `uploads/pupless-trust-1-square.png`（1254x1254）。
+`uploads/pupless-trust-1.png`（1122x1402の縦長）は一つ前の版で、戻せるように残してある。
+切り替え方は `trust1.html` の冒頭コメントに書いた。
+
+```bash
+CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CH" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+      --force-device-scale-factor=1 --window-size=800,800 --virtual-time-budget=6000 \
+      --screenshot=/tmp/trust1.png "file://$PWD/tools/trust1.html"
+sips -s format jpeg -s formatOptions 88 /tmp/trust1.png --out img/pupless-trust-1.jpg
+sips -s format avif -s formatOptions 62 /tmp/trust1.png --out img/pupless-trust-1.avif
+```
+
+被写体の位置（現データは bbox 300,219-1034,1063）も canvas で実測した値で、
+`trust1.html` の CSS にべた書きしてある。**元データを差し替えたら測り直すこと。**
+元データが正方形でも被写体が中央に写っているとは限らない（現データは右下寄り）。
+
+背景が白でよければ、切り抜きは要らない。元写真の地色を `brightness()` で 255 に
+上げるだけでカードの白と地続きになり、離れた粒も元の影もそのまま残る。
+切り抜きが要るのは、白以外の背景に載せたいときだけ。
+
+生成AIに作らせたパッケージ画像は、**毎回どこかの文字が崩れていないか確認すること。**
+現データも右下バッジの「理想の」が崩れている（表示サイズでは読めないので許容した）。
+拡大して確認する例:
+
+```bash
+sips -r 180 uploads/pupless-trust-1-square.png --out /tmp/rot.png  # 写真が上下逆なので
+open /tmp/rot.png
+```
+
+## 背景の切り抜き（cutout.swift）
+
+**現在このLPでは使っていない**（trust-1 は白背景なので切り抜き不要になった）。
+白以外の背景に商品を載せたくなったときのために残してある。
+
+macOS の Vision framework（`VNGenerateForegroundInstanceMaskRequest`）で、写真から
+被写体だけを抜いて背景透過PNGにする。Python も外部ライブラリも要らない。
+
+```bash
+swiftc -O tools/cutout.swift -o /tmp/cutout
+/tmp/cutout uploads/pupless-trust-1.png uploads/pupless-trust-1-cutout.png
+```
+
+- **生成AIに「背景透過で」と頼んで出てくる画像は、透過ではないことがある。**
+  市松模様を「絵として」描いただけで、アルファチャンネルを持たない。実際に踏んだ。
+  受け取ったら必ず `sips -g hasAlpha <file>` で確認する（`no` なら透過していない）。
+  カラータイプまで見るなら PNG ヘッダの IHDR 14バイト目（2=RGB, 6=RGBA）。
+- **被写体として認識された1塊だけが残る。** trust-1 では、パウチから離れて転がっている
+  粒が背景と判定されて消えた。切り抜き後は必ず何が消えたか確認すること。
+- 切り抜くと元の影も消えるので、接地感は CSS の `drop-shadow` で足す。
 
 ## ハマりどころ（実際に踏んだもの）
 

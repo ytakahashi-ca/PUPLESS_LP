@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- pupless-trust-1.jpg / .avif の版下。
+
+     元データ: uploads/pupless-trust-1-square.png (1254x1254、最初から正方形)
+     旧データ: uploads/pupless-trust-1.png (1122x1402、縦長)
+       戻したい場合は下の img src と数値を旧データ用に差し替える。
+       旧: width:640.2px height:800px left:33.6px top:-13.7px
+
+     ▼ 置き場所の制約
+     枠は aspect-ratio:1/1 で object-fit:cover。縦長の画像を渡すと上下が
+     切り取られて「ズームして見える」ので、正方形で書き出して渡す。
+
+     ▼ 配置
+     被写体の実測 bbox（影を除いた本体のみ）は (300,219)-(1034,1063)、中心 (667,641)。
+     元データは正方形だが被写体が右下寄りに写っているため、そのまま縮小すると
+     左に余白が偏る。本体の中心を枠の中心に合わせて補正している。
+       scale  = 800/1254 = 0.6380
+       width  = height = 1254 * 0.6380 = 800
+       left   = 400 - 667*0.6380 = -25.5
+       top    = 400 - 641*0.6380 = -9.0
+
+     ▼ 地色
+     元写真の地色は rgb(249,248,248)。brightness(1.03) で 255 に持ち上げ、
+     カードの白 #FFF と地続きにしている。 -->
+<meta charset="utf-8">
+<style>
+  *{margin:0;padding:0}
+  html,body{width:800px;height:800px;overflow:hidden;background:#FFFFFF}
+  .f{width:800px;height:800px;position:relative;overflow:hidden;background:#FFFFFF}
+  .f img{
+    position:absolute;
+    width:800px; height:800px;
+    left:-25.5px; top:-9.0px;
+    filter:brightness(1.03);
+  }
+</style>
+<div class="f"><img src="../uploads/pupless-trust-1-square.png" alt=""></div>
