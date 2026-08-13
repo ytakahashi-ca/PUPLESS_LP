@@ -15,7 +15,7 @@
     ga4:     'G-3SR19RT9LQ',   /* 'G-XXXXXXXXXX'   Google アナリティクス4 */
     ads:     '',   /* 'AW-XXXXXXXXX'   Google 広告（コンバージョン計測用） */
     meta:    '',   /* '1234567890123'  Meta ピクセル */
-    clarity: ''    /* 'abcdefghij'     Microsoft Clarity */
+    clarity: 'y1nxqpcfc8'    /* 'abcdefghij'     Microsoft Clarity */
   };
 
   /* ---- 2. 本番として扱うホスト。ここに無ければ全てテストモード ---- */
@@ -100,6 +100,9 @@
     if (!IDS.clarity) return;
     window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
     loadScript('https://www.clarity.ms/tag/' + encodeURIComponent(IDS.clarity));
+    /* Clarity にはGA4のような内部トラフィック除外が無いため、カスタムタグを付けて
+       ダッシュボードのフィルタ（traffic_type = internal）で外せるようにする。 */
+    if (isInternal) clarity('set', 'traffic_type', 'internal');
   }
 
   if (isProd) {
