@@ -1,10 +1,9 @@
 # PUPLESS — クローラー向けの指示
 # 公開している3ページはすべてクロール・インデックスを許可する。
+# 見せる必要のないファイルは build.sh で dist/ に入れない方針のため、
+# ここで Disallow するものは今のところ無い。
 
 User-agent: *
 Allow: /
-
-# 作業用の元画像置き場。公開はされているが検索結果に出す必要はない。
-Disallow: /uploads/
 
 Sitemap: https://getpupless.com/sitemap.xml
