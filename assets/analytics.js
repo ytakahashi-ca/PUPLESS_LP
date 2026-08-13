@@ -109,6 +109,28 @@
     }
   }
 
+  /* 同一セッション内で1回だけ送る。モーダルの開き直しや連打でイベント数が
+     水増しされると困るもの（キーイベント候補）に使う。
+     key を省くとイベント名だけで判定。'名前:値' を渡せば値ごとに1回になる。
+     テストで再送したいときは sessionStorage.clear() か新しいタブで開く。 */
+  var onceMemo = {};
+
+  function trackOnce(name, params, key) {
+    var k = 'pupless_once:' + (key || name);
+    if (onceMemo[k]) { if (verbose) console.info('[PUPLESS] ' + name + ' は送信済みのため抑制', k); return false; }
+    try {
+      if (sessionStorage.getItem(k)) {
+        onceMemo[k] = 1;
+        if (verbose) console.info('[PUPLESS] ' + name + ' は送信済みのため抑制', k);
+        return false;
+      }
+      sessionStorage.setItem(k, '1');
+    } catch (e) { /* プライベートモード等で使えない場合はメモリだけで判定する */ }
+    onceMemo[k] = 1;
+    track(name, params);
+    return true;
+  }
+
   /* Google 広告のコンバージョン（send_to は 'AW-XXXX/ラベル' 形式） */
   function conversion(sendTo, params) {
     log('conversion', { send_to: sendTo });
@@ -123,6 +145,7 @@
     ids: IDS,
     events: events,
     track: track,
+    trackOnce: trackOnce,
     conversion: conversion
   };
   window.PUPLESS_EVENTS = events;   /* console から確認しやすいように別名も置く */

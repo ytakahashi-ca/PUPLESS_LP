@@ -634,7 +634,7 @@ picture{display:contents}
 
   </div>
 
-<div id="refund-modal" hidden data-modal-close style="position:fixed;inset:0;background:rgba(40,40,40,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;overflow-y:auto">
+<div id="refund-modal" hidden style="position:fixed;inset:0;background:rgba(40,40,40,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;overflow-y:auto">
       <div data-modal-panel style="width:100%;max-width:368px;background:#fff;border-radius:26px;padding:28px 22px 24px;box-sizing:border-box;max-height:calc(100vh - 48px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 18px 50px rgba(0,0,0,.18);position:relative;display:flex;flex-direction:column;align-items:center">
         <button data-modal-close type="button" aria-label="閉じる" style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;border:none;background:transparent;color:#999;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">✕</button>
 
@@ -680,7 +680,7 @@ picture{display:contents}
 
 <!-- ===== 販売準備中モーダル（定期購入 / 単品購入 CTA） ===== -->
 <style>@keyframes pl-restock-in{from{opacity:0}to{opacity:1}}@keyframes pl-restock-pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}#restock-modal[data-open] {animation:pl-restock-in .18s ease-out both}#restock-modal[data-open] [data-restock-panel]{animation:pl-restock-pop .22s cubic-bezier(.22,.61,.36,1) both}#restock-email:focus{outline:none;border-color:#1A70A8}#restock-submit:hover{background:#175f8f}#restock-modal[hidden],#restock-modal [hidden]{display:none!important}</style>
-<div id="restock-modal" hidden data-restock-close role="dialog" aria-modal="true" aria-labelledby="restock-title" style="position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;overflow-y:auto">
+<div id="restock-modal" hidden role="dialog" aria-modal="true" aria-labelledby="restock-title" style="position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;overflow-y:auto">
   <div data-restock-panel style="width:100%;max-width:368px;background:#fff;border-radius:26px;padding:28px 22px 24px;box-sizing:border-box;position:relative;max-height:calc(100vh - 48px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 18px 50px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;text-align:center">
     <button type="button" data-restock-close aria-label="閉じる" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border:none;background:transparent;color:#444;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
     <div style="width:120px;height:120px;border-radius:50%;background:#EDF4FA;display:flex;align-items:center;justify-content:center;margin:10px 0 18px"><picture><source srcset="img/pouch-plus-supplement.avif" type="image/avif"><img src="img/pouch-plus-supplement.jpg" width="190" height="280" loading="lazy" decoding="async" alt="PUPLESS パウチとサプリメント" style="width:104px;height:120px;object-fit:contain"></picture></div>
@@ -838,7 +838,9 @@ picture{display:contents}
     restock.hidden = false; restock.setAttribute('data-open', '');
     document.body.style.overflow = 'hidden';
     var c = restock.querySelector('[data-restock-close]'); if (c) c.focus();
-    if (window.pupless) pupless.track('restock_modal_open', { cta: cta || '' });
+    /* 開き直し・連打で水増ししないよう、CTAごとにセッション内1回だけ送る */
+    if (window.pupless) pupless.trackOnce('restock_modal_open', { cta: cta || '' },
+                                          'restock_modal_open:' + (cta || ''));
   }
   function closeRestock(){
     restock.hidden = true; restock.removeAttribute('data-open');
@@ -852,8 +854,15 @@ picture{display:contents}
         rInput = document.getElementById('restock-email'),
         rErr   = document.getElementById('restock-error');
 
+    /* 入力欄の文字をドラッグ選択してパネル外で離すと click の target が
+       オーバーレイになる。押し始めもパネル外だったときだけ閉じる。 */
+    var downOutside = false;
+    restock.addEventListener('mousedown', function(e){
+      downOutside = !e.target.closest('[data-restock-panel]');
+    });
     restock.addEventListener('click', function(e){
-      if (e.target.closest('[data-restock-close]') || !e.target.closest('[data-restock-panel]')) closeRestock();
+      if (e.target.closest('[data-restock-close]')) { closeRestock(); return; }
+      if (!e.target.closest('[data-restock-panel]') && downOutside) closeRestock();
     });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !restock.hidden) closeRestock(); });
 
