@@ -857,7 +857,9 @@ picture{display:contents}
         それでメールが保存されないのは困るため）。 */
   var RESTOCK_FORM_URL   = 'https://docs.google.com/forms/d/e/1FAIpQLSeUMLLARdNzmhwSPVn8zxija--MiSd0JL39R2HhOtTHFnoXqw/formResponse',
       RESTOCK_FORM_FIELD = 'entry.1592644665',
-      RESTOCK_PROD_HOSTS = ['getpupless.com', 'www.getpupless.com'];
+      RESTOCK_PROD_HOSTS = ['getpupless.com', 'www.getpupless.com'],
+      /* Google 広告のコンバージョンアクション「申し込み」の send_to 値 */
+      RESTOCK_ADS_CONVERSION = 'AW-623605526/7oGICJivg-EcEJburakC';
 
   function saveRestockEmail(email){
     if (RESTOCK_PROD_HOSTS.indexOf(location.hostname) === -1) {
@@ -895,7 +897,12 @@ picture{display:contents}
         rErr.hidden = false; rInput.style.borderColor = '#C0392B'; rInput.focus(); return;
       }
       rErr.hidden = true; rInput.style.borderColor = '#DEDEDE';
-      if (window.pupless) pupless.track('restock_email_submit', {});
+      if (window.pupless) {
+        pupless.track('restock_email_submit', {});
+        /* Google 広告のコンバージョン「申し込み」。カウント方法は管理画面側で
+           「1回」にしてあるので、連打しても1件として集計される。 */
+        pupless.conversion(RESTOCK_ADS_CONVERSION);
+      }
       saveRestockEmail(v);
       rForm.hidden = true; rDone.hidden = false;
     });

@@ -13,7 +13,7 @@
   /* ---- 1. 計測ID：発行されたらここを埋めるだけ（空文字の間は読み込まない） ---- */
   var IDS = {
     ga4:     'G-3SR19RT9LQ',   /* 'G-XXXXXXXXXX'   Google アナリティクス4 */
-    ads:     '',   /* 'AW-XXXXXXXXX'   Google 広告（コンバージョン計測用） */
+    ads:     'AW-623605526',   /* 'AW-XXXXXXXXX'   Google 広告（コンバージョン計測用） */
     meta:    '901097342555400',   /* '1234567890123'  Meta ピクセル */
     clarity: 'y1nxqpcfc8'    /* 'abcdefghij'     Microsoft Clarity */
   };
