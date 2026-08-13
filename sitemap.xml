@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 公開ページの一覧。ページを追加・更新したら <lastmod> も直すこと。
+     changefreq / priority は Google が無視するため書いていない。 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://getpupless.com/</loc>
+    <lastmod>2026-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://getpupless.com/privacy-policy.html</loc>
+    <lastmod>2026-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://getpupless.com/tokushoho.html</loc>
+    <lastmod>2026-08-12</lastmod>
+  </url>
+</urlset>

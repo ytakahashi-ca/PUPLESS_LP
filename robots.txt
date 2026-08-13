@@ -1,0 +1,10 @@
+# PUPLESS — クローラー向けの指示
+# 公開している3ページはすべてクロール・インデックスを許可する。
+
+User-agent: *
+Allow: /
+
+# 作業用の元画像置き場。公開はされているが検索結果に出す必要はない。
+Disallow: /uploads/
+
+Sitemap: https://getpupless.com/sitemap.xml
