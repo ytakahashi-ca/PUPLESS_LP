@@ -32,12 +32,32 @@
   /* 本番でも ?pupless_debug=1 を付ければ console に出る（送信はそのまま行う） */
   var verbose = !isProd || location.search.indexOf('pupless_debug=1') !== -1;
 
+  /* ---- 内部トラフィック（自社の動作確認）の目印 ---------------------
+     固定IPが無くても除外できるよう、?pupless_internal=1 を付けて開いた
+     ブラウザを内部として記憶し、GA4 に traffic_type=internal を付けて送る。
+     GA4 側は「データフィルタ → 内部トラフィック」を有効にするだけでよい。
+     解除は ?pupless_internal=0 。今の状態は pupless.internal で確認できる。 */
+  var isInternal = (function () {
+    var m = location.search.match(/[?&]pupless_internal=([01])/);
+    try {
+      if (m) {
+        if (m[1] === '1') localStorage.setItem('pupless_internal', '1');
+        else              localStorage.removeItem('pupless_internal');
+      }
+      return localStorage.getItem('pupless_internal') === '1';
+    } catch (e) {
+      /* localStorage が使えない場合はそのページ限りの判定にする */
+      return !!(m && m[1] === '1');
+    }
+  })();
+
   var events = [];
 
   function log(name, params) {
     var record = { name: name, params: params || {}, at: new Date().toISOString() };
     events.push(record);
-    if (verbose) console.info('[PUPLESS/' + (isProd ? 'prod' : 'test') + '] ' + name, record.params);
+    if (verbose) console.info('[PUPLESS/' + (isProd ? 'prod' : 'test') +
+                              (isInternal ? '/internal' : '') + '] ' + name, record.params);
   }
 
   /* ---- 4. 本番タグの読み込み ------------------------------------- */
@@ -54,8 +74,10 @@
     window.gtag = function () { window.dataLayer.push(arguments); };
     gtag('js', new Date());
     loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(IDS.ga4 || IDS.ads));
-    if (IDS.ga4) gtag('config', IDS.ga4);
-    if (IDS.ads) gtag('config', IDS.ads);
+    /* traffic_type は config で渡すと、そのページの全イベントに付く */
+    var cfg = isInternal ? { traffic_type: 'internal' } : {};
+    if (IDS.ga4) gtag('config', IDS.ga4, cfg);
+    if (IDS.ads) gtag('config', IDS.ads, cfg);
   }
 
   function loadMeta() {
@@ -142,6 +164,7 @@
 
   window.pupless = {
     mode: isProd ? 'production' : 'test',
+    internal: isInternal,
     ids: IDS,
     events: events,
     track: track,
