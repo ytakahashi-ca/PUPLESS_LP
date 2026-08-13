@@ -14,18 +14,23 @@
   var IDS = {
     ga4:     'G-3SR19RT9LQ',   /* 'G-XXXXXXXXXX'   Google アナリティクス4 */
     ads:     '',   /* 'AW-XXXXXXXXX'   Google 広告（コンバージョン計測用） */
-    meta:    '',   /* '1234567890123'  Meta ピクセル */
+    meta:    '901097342555400',   /* '1234567890123'  Meta ピクセル */
     clarity: 'y1nxqpcfc8'    /* 'abcdefghij'     Microsoft Clarity */
   };
 
   /* ---- 2. 本番として扱うホスト。ここに無ければ全てテストモード ---- */
   var PROD_HOSTS = ['getpupless.com', 'www.getpupless.com'];
 
-  /* ---- 3. Meta の標準イベント名への対応表（無いものは trackCustom で送る） ---- */
+  /* ---- 3. Meta の標準イベント名への対応表（無いものは trackCustom で送る） ----
+     Lead に何を割り当てるかは配信の最適化先そのものになる。今の成果は
+     「入荷通知の申込み」なので restock_email_submit を Lead にしている。
+     cta_click を Lead にすると「押すだけで離脱する人」を増やす方向に
+     最適化されてしまうため、標準イベントには割り当てない（custom で送る）。
+     販売開始で購入導線が繋がったら Purchase を最上位に据え直すこと。 */
   var META_STANDARD = {
-    cta_click:      'Lead',
-    begin_checkout: 'InitiateCheckout',
-    purchase:       'Purchase'
+    restock_email_submit: 'Lead',
+    begin_checkout:       'InitiateCheckout',
+    purchase:             'Purchase'
   };
 
   var isProd = PROD_HOSTS.indexOf(location.hostname) !== -1;
