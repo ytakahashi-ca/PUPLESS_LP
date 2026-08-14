@@ -826,14 +826,35 @@ picture{display:contents}
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
   }
 
+  /* ---- 料金セクションの到達（＝価格を見た人）----
+     需要調査の分母として使う。「価格を見た人のうち何割が購入CTAを押したか」が
+     価格の受容率にあたるため、#plans が画面に入った時点で1回だけ送る。
+     セクションが画面より高くても確実に発火するよう threshold ではなく
+     rootMargin で「セクション上端が画面の75%位置まで来たら」を条件にしている。 */
+  (function(){
+    var plans = document.getElementById('plans');
+    if (!plans || typeof IntersectionObserver === 'undefined') return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        io.disconnect();
+        if (window.pupless) pupless.trackOnce('view_plans');
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
+    io.observe(plans);
+  })();
+
   /* ---- 販売準備中モーダル（定期購入 / 単品購入 CTA） ----
      カート未開設のあいだ、購入CTAはこのモーダルで受け止めて入荷通知を集める。
      CTA_URLS に遷移先が入った時点で openRestock は呼ばれなくなる。 */
   var restock = document.getElementById('restock-modal');
   var restockLast = null;
+  /* どのCTAから開いたモーダルでメール登録に至ったかを追うために保持する */
+  var restockCta = '';
 
   function openRestock(cta){
     if (!restock) return;
+    restockCta = cta || '';
     restockLast = document.activeElement;
     restock.hidden = false; restock.setAttribute('data-open', '');
     document.body.style.overflow = 'hidden';
@@ -898,7 +919,7 @@ picture{display:contents}
       }
       rErr.hidden = true; rInput.style.borderColor = '#DEDEDE';
       if (window.pupless) {
-        pupless.track('restock_email_submit', {});
+        pupless.track('restock_email_submit', { cta: restockCta });
         /* Google 広告のコンバージョン「申し込み」。カウント方法は管理画面側で
            「1回」にしてあるので、連打しても1件として集計される。 */
         pupless.conversion(RESTOCK_ADS_CONVERSION);
