@@ -29,7 +29,10 @@
 <link rel="preload" as="image" href="img/pupless-hero-bg.avif" type="image/avif" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<!-- フォントは描画をブロックしないよう media="print" → onload で切り替える。
+     ブロッキングを外すだけで、読み込む字面・ウェイトは従来と同じ。 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"></noscript>
 
 <style>
     body { margin: 0; background: #ececec; }
@@ -104,6 +107,17 @@ picture{display:contents}
   h1.nw{ font-size: clamp(21px, 7.63vw, 30px) !important; }
   h2.nw{ font-size: clamp(17px, 6.62vw, 26px) !important;
          padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+/* FV下端のスクロール誘導。ヒーローは画面より高く次セクションが覗かないため、
+   続きがあることを明示する。 */
+@keyframes pl-bob{
+  0%,100%{ transform: translateY(0); opacity:.75 }
+  50%    { transform: translateY(4px); opacity:1 }
+}
+#fv-scroll-cue svg{ animation: pl-bob 1.8s ease-in-out infinite }
+@media (prefers-reduced-motion: reduce){
+  #fv-scroll-cue svg{ animation: none }
 }
 
 </style>
@@ -217,19 +231,19 @@ picture{display:contents}
 
   <div style="position: absolute; inset: 0px; z-index: 1; padding: 20px 24px 0px; display: flex; flex-direction: column; align-items: center; pointer-events: none;">
 
-    <div style="font-size: 14px; letter-spacing: 0.04em; color: rgb(26, 112, 168); text-align: center; margin-bottom: 14px;">プロテイン専用サポートサプリ PUPLESS</div>
-
-    <h1 class="nw" style="font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 900; font-size: 30px; line-height: 1.5; letter-spacing: -0.02em; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 16px; white-space: nowrap;">
-      プロテインは続けたい。<br>お腹は気にしたくない。
+    <h1 class="nw" style="font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 900; font-size: 30px; line-height: 1.5; letter-spacing: -0.02em; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 14px; white-space: nowrap;">
+      プロテイン、<br>飲むとお腹が張る人へ
     </h1>
 
-    <p style="font-size: 15px; line-height: 1.75; color: rgb(85, 85, 85); text-align: center; margin: 0px 0px 18px;">
-      毎日の一杯から、ちゃんと未来を変えていく。
+    <p style="font-size: 17px; font-weight: 700; line-height: 1.6; color: rgb(17, 17, 17); text-align: center; margin: 0px 0px 20px;">
+      プロテインの前に、3粒。
     </p>
 
     <a href="#plans" class="cta-dark" data-cta="hero" role="button" style="background: rgb(17, 17, 17); color: rgb(255, 255, 255); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; border-radius: 999px; padding: 17px 26px; font-family: &quot;Noto Sans JP&quot;, sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; margin-bottom: 24px; white-space: nowrap; pointer-events: auto; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">PUPLESSを試してみる</a>
 
-    <div style="text-align: center; color: rgb(51, 51, 51); font-size: 12px; line-height: 1.8;">定期初回 ¥2,480(税込)<br>1日あたり約80円<br><span style="color: rgb(102, 102, 102); font-size: 11px;">2回目以降 ¥3,480/月・回数縛りなし・いつでも解約可</span></div>
+    <div style="text-align: center; color: rgb(51, 51, 51); font-size: 12px; line-height: 1.8;">定期初回 ¥2,480(税込・1日あたり約80円)<br><span style="color: rgb(102, 102, 102); font-size: 11px;">2回目以降 ¥3,480/月・回数縛りなし・いつでも解約可</span><br><span style="color: rgb(102, 102, 102); font-size: 10px;">90日間全額返金保証（定期は直近3ヶ月分が上限）</span></div>
+
+    <div id="fv-scroll-cue" aria-hidden="true" style="position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgb(95, 105, 115);"><span style="font-size: 11px; letter-spacing: 0.08em; font-weight: 500;">続きを見る</span><svg width="16" height="16" viewBox="0 0 14 14" fill="none" style="display: block;"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
 
   </div>
   </section>
